@@ -1,6 +1,7 @@
 ﻿Imports System
 Imports System.Net
 Imports System.IO
+Imports Salamander.Windows.Forms
 
 Public Class Form1
 
@@ -47,6 +48,7 @@ Public Class Form1
         ComboBoxGL.SelectedIndex = 0
         SetUIState(Status.INIT)
         If My.Computer.FileSystem.FileExists(ErrorFile) Then My.Computer.FileSystem.DeleteFile(ErrorFile)
+        CollapsiblePanelResults.PanelState = PanelState.Collapsed
     End Sub
 
     Private Sub Form1_Closing(ByVal sender As System.Object, ByVal e As Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -243,15 +245,15 @@ Leave:
         Me.ListViewCSV.Columns.Add(CH)
 
         CH = New ColumnHeader()
-        CH.Text = "Approx"
+        CH.Text = "Local"
         Me.ListViewCSV.Columns.Add(CH)
 
         CH = New ColumnHeader()
-        CH.Text = "Average"
+        CH.Text = "Global"
         Me.ListViewCSV.Columns.Add(CH)
 
         CH = New ColumnHeader()
-        CH.Text = "Count"
+        CH.Text = "Phrase"
         Me.ListViewCSV.Columns.Add(CH)
 
         CH = New ColumnHeader()
@@ -577,7 +579,7 @@ Leave:
 
     End Sub
 
-    Private Sub ListViewCSV_ColumnWidthChanging(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnWidthChangingEventArgs) Handles ListViewCSV.ColumnWidthChanging
+    Private Sub ListViewCSV_ColumnWidthChanging(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnWidthChangingEventArgs)
         If e.ColumnIndex = APPROX_DIDX Or e.ColumnIndex = AVG_DIDX Or e.ColumnIndex = CNT_DIDX Then
             e.Cancel = True
             e.NewWidth = 0
@@ -587,6 +589,7 @@ Leave:
 
     Private Sub ButtonFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonFilter.Click
         FilterList()
+        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
     End Sub
 
     Private Sub FilterList()
@@ -719,6 +722,7 @@ Leave:
             SetUIState(Status.INIT)
         End If
         MsgBox(LabelStatus.Text)
+        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed 
 
     End Sub
 
@@ -1094,6 +1098,7 @@ Leave:
 
     Private Sub ButtonShowOriginal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonShowOriginal.Click
         PopulateListView(InputCSVContents)
+        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
     End Sub
 
     Private Sub ButtonPR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPR.Click
@@ -1115,7 +1120,7 @@ Leave:
         End If
     End Sub
 
-    Private Sub SelectAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectAll.Click
+    Private Sub SelectAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SelectAll.Click, Button5.Click
         Dim i As Integer
 
         For i = 0 To ListViewCSV.Items.Count - 1
@@ -1124,7 +1129,7 @@ Leave:
         Next i
     End Sub
 
-    Private Sub ClearAllTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClearAll.Click
+    Private Sub ClearAllTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClearAll.Click, Button4.Click
         Dim i As Integer
 
         For i = 0 To ListViewCSV.Items.Count - 1
@@ -1133,7 +1138,7 @@ Leave:
         Next i
     End Sub
 
-    Private Sub DeleteSelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteSelected.Click
+    Private Sub DeleteSelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteSelected.Click, Button2.Click
         Dim i As Integer
 
         For i = 0 To ListViewCSV.CheckedItems.Count - 1
@@ -1174,10 +1179,10 @@ Leave:
 
         End Try
 
-        
+
     End Sub
 
-    Private Sub CopySelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopySelected.Click
+    Private Sub CopySelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopySelected.Click, Button1.Click
         Dim i As Integer, j As Integer
         Dim CBBuff As String = vbNullString
 
@@ -1202,13 +1207,29 @@ Leave:
 Leave:
     End Sub
 
-    Private Sub InvertSelection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InvertSelection.Click
+    Private Sub InvertSelection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InvertSelection.Click, Button3.Click
         Dim i As Integer
 
         For i = 0 To ListViewCSV.Items.Count - 1
             ListViewCSV.Items(i).Checked = Not ListViewCSV.Items(i).Checked
             Nap(3)
         Next i
+    End Sub
+
+    Private Sub CollapsiblePanelGenerateKW_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelGenerateKW.PanelStateChanged
+        If CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed Then
+            CollapsiblePanelResults.PanelState = PanelState.Expanded
+        ElseIf CollapsiblePanelGenerateKW.PanelState = PanelState.Expanded Then
+            CollapsiblePanelResults.PanelState = PanelState.Collapsed
+        End If
+    End Sub
+
+    Private Sub CollapsiblePanelResults_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelResults.PanelStateChanged
+        If CollapsiblePanelResults.PanelState = PanelState.Collapsed Then
+            CollapsiblePanelGenerateKW.PanelState = PanelState.Expanded
+        ElseIf CollapsiblePanelResults.PanelState = PanelState.Expanded Then
+            CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
+        End If
     End Sub
 End Class
 
