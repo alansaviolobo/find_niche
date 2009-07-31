@@ -1231,6 +1231,14 @@ Leave:
             CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
         End If
     End Sub
+
+    Private Sub CollapsiblePanelOptions_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelOptions.PanelStateChanged
+        If CollapsiblePanelOptions.PanelState = PanelState.Collapsed Then
+            PanelOptions.Location = New Point(1, 62)
+        ElseIf CollapsiblePanelOptions.PanelState = PanelState.Expanded Then
+            PanelOptions.Location = New Point(1, 224)
+        End If
+    End Sub
 End Class
 
 

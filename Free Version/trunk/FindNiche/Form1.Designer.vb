@@ -29,17 +29,12 @@ Partial Class Form1
         Me.ButtonProcess = New System.Windows.Forms.Button
         Me.SpinBoxThrottle = New System.Windows.Forms.NumericUpDown
         Me.LabelThrottle = New System.Windows.Forms.Label
-        Me.ComboBoxGL = New System.Windows.Forms.ComboBox
-        Me.GroupBoxExport = New System.Windows.Forms.GroupBox
-        Me.TextBoxExport = New System.Windows.Forms.TextBox
-        Me.ButtonExport = New System.Windows.Forms.Button
         Me.CMForLV = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SelectAll = New System.Windows.Forms.ToolStripMenuItem
         Me.ClearAll = New System.Windows.Forms.ToolStripMenuItem
         Me.InvertSelection = New System.Windows.Forms.ToolStripMenuItem
         Me.DeleteSelected = New System.Windows.Forms.ToolStripMenuItem
         Me.CopySelected = New System.Windows.Forms.ToolStripMenuItem
-        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser
         Me.SaveFileDlg = New System.Windows.Forms.SaveFileDialog
         Me.GroupBoxFilter = New System.Windows.Forms.GroupBox
         Me.CheckBoxFilterCount = New System.Windows.Forms.CheckBox
@@ -56,15 +51,21 @@ Partial Class Form1
         Me.SBApproxMax = New System.Windows.Forms.NumericUpDown
         Me.SBApproxMin = New System.Windows.Forms.NumericUpDown
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
+        Me.CollapsiblePanelGenerateKW = New Salamander.Windows.Forms.CollapsiblePanel
+        Me.LabelStatus = New System.Windows.Forms.Label
+        Me.CollapsiblePanelOptions = New Salamander.Windows.Forms.CollapsiblePanel
         Me.GroupBoxGenerateKW = New System.Windows.Forms.GroupBox
         Me.ButtonGenerateKW = New System.Windows.Forms.Button
+        Me.ComboBoxGL = New System.Windows.Forms.ComboBox
         Me.LabelCountry = New System.Windows.Forms.Label
         Me.ComboBoxKeywordType = New System.Windows.Forms.ComboBox
         Me.LabelKeywordType = New System.Windows.Forms.Label
         Me.TextBoxSeedKeyword = New System.Windows.Forms.TextBox
         Me.LabelSeedKW = New System.Windows.Forms.Label
-        Me.CollapsiblePanelGenerateKW = New Salamander.Windows.Forms.CollapsiblePanel
-        Me.LabelStatus = New System.Windows.Forms.Label
+        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser
+        Me.GroupBoxExport = New System.Windows.Forms.GroupBox
+        Me.TextBoxExport = New System.Windows.Forms.TextBox
+        Me.ButtonExport = New System.Windows.Forms.Button
         Me.CollapsiblePanelBar1 = New Salamander.Windows.Forms.CollapsiblePanelBar
         Me.CollapsiblePanelResults = New Salamander.Windows.Forms.CollapsiblePanel
         Me.Button1 = New System.Windows.Forms.Button
@@ -73,9 +74,9 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button
         Me.Button4 = New System.Windows.Forms.Button
         Me.ListViewCSV = New System.Windows.Forms.ListView
+        Me.PanelOptions = New System.Windows.Forms.Panel
         Me.GroupBoxGenerateCount.SuspendLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBoxExport.SuspendLayout()
         Me.CMForLV.SuspendLayout()
         Me.GroupBoxFilter.SuspendLayout()
         CType(Me.SBCntMin, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,11 +85,14 @@ Partial Class Form1
         CType(Me.SBAvgMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBApproxMax, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SBApproxMin, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBoxGenerateKW.SuspendLayout()
         Me.CollapsiblePanelGenerateKW.SuspendLayout()
+        Me.CollapsiblePanelOptions.SuspendLayout()
+        Me.GroupBoxGenerateKW.SuspendLayout()
+        Me.GroupBoxExport.SuspendLayout()
         CType(Me.CollapsiblePanelBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CollapsiblePanelBar1.SuspendLayout()
         Me.CollapsiblePanelResults.SuspendLayout()
+        Me.PanelOptions.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBoxGenerateCount
@@ -97,7 +101,7 @@ Partial Class Form1
         Me.GroupBoxGenerateCount.Controls.Add(Me.ButtonProcess)
         Me.GroupBoxGenerateCount.Controls.Add(Me.SpinBoxThrottle)
         Me.GroupBoxGenerateCount.Controls.Add(Me.LabelThrottle)
-        Me.GroupBoxGenerateCount.Location = New System.Drawing.Point(14, 107)
+        Me.GroupBoxGenerateCount.Location = New System.Drawing.Point(16, 10)
         Me.GroupBoxGenerateCount.Name = "GroupBoxGenerateCount"
         Me.GroupBoxGenerateCount.Size = New System.Drawing.Size(418, 56)
         Me.GroupBoxGenerateCount.TabIndex = 0
@@ -140,88 +144,41 @@ Partial Class Form1
         Me.LabelThrottle.TabIndex = 5
         Me.LabelThrottle.Text = "Throttle (seconds between requests):"
         '
-        'ComboBoxGL
-        '
-        Me.ComboBoxGL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxGL.FormattingEnabled = True
-        Me.ComboBoxGL.Items.AddRange(New Object() {"All Countries & Territories:US", "United States:US", "United Kingdom:GB", "Afghanistan:AF", "Albania:AL", "Algeria:DZ", "American Samoa:AS", "Andorra:AD", "Angola:AO", "Anguilla:AI", "Antarctica:AQ", "Antigua and Barbuda:AG", "Argentina:AR", "Armenia:AM", "Aruba:AW", "Australia:AU", "Austria:AT", "Azerbaijan:AZ", "Bahamas:BS", "Bahrain:BH", "Bangladesh:BD", "Barbados:BB", "Belarus:BY", "Belgium:BE", "Belize:BZ", "Benin:BJ", "Bermuda:BM", "Bhutan:BT", "Bolivia:BO", "Bosnia and Herzegovina:BA", "Botswana:BW", "Bouvet Island:BV", "Brazil:BR", "British Indian Ocean Territory:IO", "Brunei Darussalam:BN", "Bulgaria:BG", "Burkina Faso:BF", "Burundi:BI", "Cambodia:KH", "Cameroon:CM", "Canada:CA", "Cape Verde:CV", "Cayman Islands:KY", "Central African Republic:CF", "Chad:TD", "Chile:CL", "China:CN", "Christmas Island:CX", "Cocos (Keeling) Islands:CC", "Colombia:CO", "Comoros:KM", "Congo:CG", "Congo, Democratic Republic:CD", "Cook Islands:CK", "Costa Rica:CR", "Cote d'Ivoire:CI", "Croatia:HR", "Cyprus:CY", "Czech Republic:CZ", "Denmark:DK", "Djibouti:DJ", "Dominica:DM", "Dominican Republic:DO", "East Timor:TL", "Ecuador:EC", "Egypt:EG", "El Salvador:SV", "Equatorial Guinea:GQ", "Eritrea:ER", "Estonia:EE", "Ethiopia:ET", "Falkland Islands (Malvinas):FK", "Faroe Islands:FO", "Fiji:FJ", "Finland:FI", "France:FR", "French Guiana:GF", "French Polynesia:PF", "French Southern Territories:TF", "Gabon:GA", "Gambia:GM", "Georgia:GE", "Germany:DE", "Ghana:GH", "Gibraltar:GI", "Greece:GR", "Greenland:GL", "Grenada:GD", "Guadeloupe:GP", "Guam:GU", "Guatemala:GT", "Guinea:GN", "Guinea-Bissau:GW", "Guyana:GY", "Haiti:HT", "Heard and McDonald Islands:HM", "Honduras:HN", "Hong Kong:HK", "Hungary:HU", "Iceland:IS", "India:IN", "Indonesia:ID", "Iraq:IQ", "Ireland:IE", "Israel:IL", "Italy:IT", "Jamaica:JM", "Japan:JP", "Jordan:JO", "Kazakhstan:KZ", "Kenya:KE", "Kiribati:KI", "Kuwait:KW", "Kyrgyzstan:KG", "Lao People's Democratic Republic:LA", "Latvia:LV", "Lebanon:LB", "Lesotho:LS", "Liberia:LR", "Libya:LY", "Liechtenstein:LI", "Lithuania:LT", "Luxembourg:LU", "Macau:MO", "Macedonia:MK", "Madagascar:MG", "Malawi:MW", "Malaysia:MY", "Maldives:MV", "Mali:ML", "Malta:MT", "Marshall Islands:MH", "Martinique:MQ", "Mauritania:MR", "Mauritius:MU", "Mayotte:YT", "Mexico:MX", "Micronesia:FM", "Moldova:MD", "Monaco:MC", "Mongolia:MN", "Montserrat:MS", "Morocco:MA", "Mozambique:MZ", "Namibia:NA", "Nauru:NR", "Nepal:NP", "Netherlands:NL", "Netherlands Antilles:AN", "New Caledonia:NC", "New Zealand:NZ", "Nicaragua:NI", "Niger:NE", "Nigeria:NG", "Niue:NU", "Norfolk Island:NF", "Northern Mariana Islands:MP", "Norway:NO", "Oman:OM", "Pakistan:PK", "Palau:PW", "Palestinian Territory:PS", "Panama:PA", "Papua New Guinea:PG", "Paraguay:PY", "Peru:PE", "Philippines:PH", "Pitcairn:PN", "Poland:PL", "Portugal:PT", "Puerto Rico:PR", "Qatar:QA", "Reunion:RE", "Romania:RO", "Russian Federation:RU", "Rwanda:RW", "Saint Kitts and Nevis:KN", "Saint Lucia:LC", "Saint Vincent and the Grenadines:VC", "Samoa:WS", "San Marino:SM", "Sao Tome and Principe:ST", "Saudi Arabia:SA", "Senegal:SN", "Serbia and Montenegro:CS", "Seychelles:SC", "Sierra Leone:SL", "Singapore:SG", "Slovakia:SK", "Slovenia:SI", "Solomon Islands:SB", "Somalia:SO", "South Africa:ZA", "South Georgia and The South Sandwich Islands:GS", "South Korea:KR", "Spain:ES", "Sri Lanka:LK", "St. Helena:SH", "St. Pierre and Miquelon:PM", "Suriname:SR", "Svalbard and Jan Mayen Islands:SJ", "Swaziland:SZ", "Sweden:SE", "Switzerland:CH", "Taiwan:TW", "Tajikistan:TJ", "Tanzania:TZ", "Thailand:TH", "Togo:TG", "Tokelau:TK", "Tonga:TO", "Trinidad and Tobago:TT", "Tunisia:TN", "Turkey:TR", "Turkmenistan:TM", "Turks and Caicos Islands:TC", "Tuvalu:TV", "Uganda:UG", "Ukraine:UA", "United Arab Emirates:AE", "United States Minor Outlying Islands:UM", "Uruguay:UY", "Uzbekistan:UZ", "Vanuatu:VU", "Vatican:VA", "Venezuela:VE", "Viet Nam:VN", "Virgin Islands (British):VG", "Virgin Islands (U.S.):VI", "Wallis and Futuna Islands:WF", "Western Sahara:EH", "Yemen:YE", "Zambia:ZM", "Zimbabwe:ZW"})
-        Me.ComboBoxGL.Location = New System.Drawing.Point(97, 47)
-        Me.ComboBoxGL.Name = "ComboBoxGL"
-        Me.ComboBoxGL.Size = New System.Drawing.Size(213, 21)
-        Me.ComboBoxGL.TabIndex = 4
-        '
-        'GroupBoxExport
-        '
-        Me.GroupBoxExport.Controls.Add(Me.TextBoxExport)
-        Me.GroupBoxExport.Controls.Add(Me.ButtonExport)
-        Me.GroupBoxExport.Location = New System.Drawing.Point(14, 273)
-        Me.GroupBoxExport.Name = "GroupBoxExport"
-        Me.GroupBoxExport.Size = New System.Drawing.Size(418, 57)
-        Me.GroupBoxExport.TabIndex = 21
-        Me.GroupBoxExport.TabStop = False
-        Me.GroupBoxExport.Text = "Export"
-        '
-        'TextBoxExport
-        '
-        Me.TextBoxExport.Location = New System.Drawing.Point(121, 21)
-        Me.TextBoxExport.Name = "TextBoxExport"
-        Me.TextBoxExport.Size = New System.Drawing.Size(263, 20)
-        Me.TextBoxExport.TabIndex = 28
-        '
-        'ButtonExport
-        '
-        Me.ButtonExport.Location = New System.Drawing.Point(12, 19)
-        Me.ButtonExport.Name = "ButtonExport"
-        Me.ButtonExport.Size = New System.Drawing.Size(91, 23)
-        Me.ButtonExport.TabIndex = 27
-        Me.ButtonExport.Text = "Export"
-        Me.ButtonExport.UseVisualStyleBackColor = True
-        '
         'CMForLV
         '
         Me.CMForLV.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SelectAll, Me.ClearAll, Me.InvertSelection, Me.DeleteSelected, Me.CopySelected})
         Me.CMForLV.Name = "CMForLV"
-        Me.CMForLV.Size = New System.Drawing.Size(162, 114)
+        Me.CMForLV.Size = New System.Drawing.Size(156, 114)
         '
         'SelectAll
         '
         Me.SelectAll.Name = "SelectAll"
-        Me.SelectAll.Size = New System.Drawing.Size(161, 22)
+        Me.SelectAll.Size = New System.Drawing.Size(155, 22)
         Me.SelectAll.Text = "Select All"
         '
         'ClearAll
         '
         Me.ClearAll.Name = "ClearAll"
-        Me.ClearAll.Size = New System.Drawing.Size(161, 22)
+        Me.ClearAll.Size = New System.Drawing.Size(155, 22)
         Me.ClearAll.Text = "Clear All"
         '
         'InvertSelection
         '
         Me.InvertSelection.Name = "InvertSelection"
-        Me.InvertSelection.Size = New System.Drawing.Size(161, 22)
+        Me.InvertSelection.Size = New System.Drawing.Size(155, 22)
         Me.InvertSelection.Text = "Invert Selection"
         '
         'DeleteSelected
         '
         Me.DeleteSelected.Name = "DeleteSelected"
-        Me.DeleteSelected.Size = New System.Drawing.Size(161, 22)
+        Me.DeleteSelected.Size = New System.Drawing.Size(155, 22)
         Me.DeleteSelected.Text = "Delete Selected"
         '
         'CopySelected
         '
         Me.CopySelected.Name = "CopySelected"
-        Me.CopySelected.Size = New System.Drawing.Size(161, 22)
+        Me.CopySelected.Size = New System.Drawing.Size(155, 22)
         Me.CopySelected.Text = "Copy Selected"
-        '
-        'WebBrowser1
-        '
-        Me.WebBrowser1.Location = New System.Drawing.Point(398, -13)
-        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.ScriptErrorsSuppressed = True
-        Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
-        Me.WebBrowser1.TabIndex = 28
-        Me.WebBrowser1.Visible = False
         '
         'SaveFileDlg
         '
@@ -244,7 +201,7 @@ Partial Class Form1
         Me.GroupBoxFilter.Controls.Add(Me.SBAvgMax)
         Me.GroupBoxFilter.Controls.Add(Me.SBApproxMax)
         Me.GroupBoxFilter.Controls.Add(Me.SBApproxMin)
-        Me.GroupBoxFilter.Location = New System.Drawing.Point(14, 165)
+        Me.GroupBoxFilter.Location = New System.Drawing.Point(16, 72)
         Me.GroupBoxFilter.Name = "GroupBoxFilter"
         Me.GroupBoxFilter.Size = New System.Drawing.Size(418, 106)
         Me.GroupBoxFilter.TabIndex = 7
@@ -375,13 +332,60 @@ Partial Class Form1
         '
         Me.LinkLabel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LinkLabel1.Location = New System.Drawing.Point(0, 455)
+        Me.LinkLabel1.Location = New System.Drawing.Point(0, 499)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(463, 23)
+        Me.LinkLabel1.Size = New System.Drawing.Size(465, 23)
         Me.LinkLabel1.TabIndex = 27
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "For support and updates please visit www.nichetaser.com"
         Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'CollapsiblePanelGenerateKW
+        '
+        Me.CollapsiblePanelGenerateKW.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CollapsiblePanelGenerateKW.BackColor = System.Drawing.SystemColors.Control
+        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.LabelStatus)
+        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.PanelOptions)
+        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.CollapsiblePanelOptions)
+        Me.CollapsiblePanelGenerateKW.EndColour = System.Drawing.SystemColors.MenuBar
+        Me.CollapsiblePanelGenerateKW.Image = Nothing
+        Me.CollapsiblePanelGenerateKW.Location = New System.Drawing.Point(8, 8)
+        Me.CollapsiblePanelGenerateKW.Name = "CollapsiblePanelGenerateKW"
+        Me.CollapsiblePanelGenerateKW.PanelState = Salamander.Windows.Forms.PanelState.Expanded
+        Me.CollapsiblePanelGenerateKW.Size = New System.Drawing.Size(453, 449)
+        Me.CollapsiblePanelGenerateKW.StartColour = System.Drawing.SystemColors.Window
+        Me.CollapsiblePanelGenerateKW.TabIndex = 0
+        Me.CollapsiblePanelGenerateKW.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CollapsiblePanelGenerateKW.TitleFontColour = System.Drawing.Color.Navy
+        Me.CollapsiblePanelGenerateKW.TitleText = "Options"
+        '
+        'LabelStatus
+        '
+        Me.LabelStatus.Location = New System.Drawing.Point(16, 411)
+        Me.LabelStatus.Name = "LabelStatus"
+        Me.LabelStatus.Size = New System.Drawing.Size(421, 33)
+        Me.LabelStatus.TabIndex = 24
+        Me.LabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'CollapsiblePanelOptions
+        '
+        Me.CollapsiblePanelOptions.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CollapsiblePanelOptions.BackColor = System.Drawing.SystemColors.Control
+        Me.CollapsiblePanelOptions.Controls.Add(Me.GroupBoxGenerateKW)
+        Me.CollapsiblePanelOptions.Controls.Add(Me.GroupBoxExport)
+        Me.CollapsiblePanelOptions.EndColour = System.Drawing.SystemColors.MenuBar
+        Me.CollapsiblePanelOptions.Image = Nothing
+        Me.CollapsiblePanelOptions.Location = New System.Drawing.Point(1, 30)
+        Me.CollapsiblePanelOptions.Name = "CollapsiblePanelOptions"
+        Me.CollapsiblePanelOptions.PanelState = Salamander.Windows.Forms.PanelState.Expanded
+        Me.CollapsiblePanelOptions.Size = New System.Drawing.Size(452, 195)
+        Me.CollapsiblePanelOptions.StartColour = System.Drawing.SystemColors.Window
+        Me.CollapsiblePanelOptions.TabIndex = 25
+        Me.CollapsiblePanelOptions.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CollapsiblePanelOptions.TitleFontColour = System.Drawing.Color.Navy
+        Me.CollapsiblePanelOptions.TitleText = "Generate Keywords"
         '
         'GroupBoxGenerateKW
         '
@@ -393,26 +397,36 @@ Partial Class Form1
         Me.GroupBoxGenerateKW.Controls.Add(Me.TextBoxSeedKeyword)
         Me.GroupBoxGenerateKW.Controls.Add(Me.LabelSeedKW)
         Me.GroupBoxGenerateKW.Controls.Add(Me.WebBrowser1)
-        Me.GroupBoxGenerateKW.Location = New System.Drawing.Point(13, 29)
+        Me.GroupBoxGenerateKW.Location = New System.Drawing.Point(16, 32)
         Me.GroupBoxGenerateKW.Name = "GroupBoxGenerateKW"
-        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 76)
+        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 88)
         Me.GroupBoxGenerateKW.TabIndex = 29
         Me.GroupBoxGenerateKW.TabStop = False
         Me.GroupBoxGenerateKW.Text = "Generate Keyword List"
         '
         'ButtonGenerateKW
         '
-        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 45)
+        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 54)
         Me.ButtonGenerateKW.Name = "ButtonGenerateKW"
         Me.ButtonGenerateKW.Size = New System.Drawing.Size(75, 23)
         Me.ButtonGenerateKW.TabIndex = 23
         Me.ButtonGenerateKW.Text = "Generate"
         Me.ButtonGenerateKW.UseVisualStyleBackColor = True
         '
+        'ComboBoxGL
+        '
+        Me.ComboBoxGL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxGL.FormattingEnabled = True
+        Me.ComboBoxGL.Items.AddRange(New Object() {"All Countries & Territories:US", "United States:US", "United Kingdom:GB", "Afghanistan:AF", "Albania:AL", "Algeria:DZ", "American Samoa:AS", "Andorra:AD", "Angola:AO", "Anguilla:AI", "Antarctica:AQ", "Antigua and Barbuda:AG", "Argentina:AR", "Armenia:AM", "Aruba:AW", "Australia:AU", "Austria:AT", "Azerbaijan:AZ", "Bahamas:BS", "Bahrain:BH", "Bangladesh:BD", "Barbados:BB", "Belarus:BY", "Belgium:BE", "Belize:BZ", "Benin:BJ", "Bermuda:BM", "Bhutan:BT", "Bolivia:BO", "Bosnia and Herzegovina:BA", "Botswana:BW", "Bouvet Island:BV", "Brazil:BR", "British Indian Ocean Territory:IO", "Brunei Darussalam:BN", "Bulgaria:BG", "Burkina Faso:BF", "Burundi:BI", "Cambodia:KH", "Cameroon:CM", "Canada:CA", "Cape Verde:CV", "Cayman Islands:KY", "Central African Republic:CF", "Chad:TD", "Chile:CL", "China:CN", "Christmas Island:CX", "Cocos (Keeling) Islands:CC", "Colombia:CO", "Comoros:KM", "Congo:CG", "Congo, Democratic Republic:CD", "Cook Islands:CK", "Costa Rica:CR", "Cote d'Ivoire:CI", "Croatia:HR", "Cyprus:CY", "Czech Republic:CZ", "Denmark:DK", "Djibouti:DJ", "Dominica:DM", "Dominican Republic:DO", "East Timor:TL", "Ecuador:EC", "Egypt:EG", "El Salvador:SV", "Equatorial Guinea:GQ", "Eritrea:ER", "Estonia:EE", "Ethiopia:ET", "Falkland Islands (Malvinas):FK", "Faroe Islands:FO", "Fiji:FJ", "Finland:FI", "France:FR", "French Guiana:GF", "French Polynesia:PF", "French Southern Territories:TF", "Gabon:GA", "Gambia:GM", "Georgia:GE", "Germany:DE", "Ghana:GH", "Gibraltar:GI", "Greece:GR", "Greenland:GL", "Grenada:GD", "Guadeloupe:GP", "Guam:GU", "Guatemala:GT", "Guinea:GN", "Guinea-Bissau:GW", "Guyana:GY", "Haiti:HT", "Heard and McDonald Islands:HM", "Honduras:HN", "Hong Kong:HK", "Hungary:HU", "Iceland:IS", "India:IN", "Indonesia:ID", "Iraq:IQ", "Ireland:IE", "Israel:IL", "Italy:IT", "Jamaica:JM", "Japan:JP", "Jordan:JO", "Kazakhstan:KZ", "Kenya:KE", "Kiribati:KI", "Kuwait:KW", "Kyrgyzstan:KG", "Lao People's Democratic Republic:LA", "Latvia:LV", "Lebanon:LB", "Lesotho:LS", "Liberia:LR", "Libya:LY", "Liechtenstein:LI", "Lithuania:LT", "Luxembourg:LU", "Macau:MO", "Macedonia:MK", "Madagascar:MG", "Malawi:MW", "Malaysia:MY", "Maldives:MV", "Mali:ML", "Malta:MT", "Marshall Islands:MH", "Martinique:MQ", "Mauritania:MR", "Mauritius:MU", "Mayotte:YT", "Mexico:MX", "Micronesia:FM", "Moldova:MD", "Monaco:MC", "Mongolia:MN", "Montserrat:MS", "Morocco:MA", "Mozambique:MZ", "Namibia:NA", "Nauru:NR", "Nepal:NP", "Netherlands:NL", "Netherlands Antilles:AN", "New Caledonia:NC", "New Zealand:NZ", "Nicaragua:NI", "Niger:NE", "Nigeria:NG", "Niue:NU", "Norfolk Island:NF", "Northern Mariana Islands:MP", "Norway:NO", "Oman:OM", "Pakistan:PK", "Palau:PW", "Palestinian Territory:PS", "Panama:PA", "Papua New Guinea:PG", "Paraguay:PY", "Peru:PE", "Philippines:PH", "Pitcairn:PN", "Poland:PL", "Portugal:PT", "Puerto Rico:PR", "Qatar:QA", "Reunion:RE", "Romania:RO", "Russian Federation:RU", "Rwanda:RW", "Saint Kitts and Nevis:KN", "Saint Lucia:LC", "Saint Vincent and the Grenadines:VC", "Samoa:WS", "San Marino:SM", "Sao Tome and Principe:ST", "Saudi Arabia:SA", "Senegal:SN", "Serbia and Montenegro:CS", "Seychelles:SC", "Sierra Leone:SL", "Singapore:SG", "Slovakia:SK", "Slovenia:SI", "Solomon Islands:SB", "Somalia:SO", "South Africa:ZA", "South Georgia and The South Sandwich Islands:GS", "South Korea:KR", "Spain:ES", "Sri Lanka:LK", "St. Helena:SH", "St. Pierre and Miquelon:PM", "Suriname:SR", "Svalbard and Jan Mayen Islands:SJ", "Swaziland:SZ", "Sweden:SE", "Switzerland:CH", "Taiwan:TW", "Tajikistan:TJ", "Tanzania:TZ", "Thailand:TH", "Togo:TG", "Tokelau:TK", "Tonga:TO", "Trinidad and Tobago:TT", "Tunisia:TN", "Turkey:TR", "Turkmenistan:TM", "Turks and Caicos Islands:TC", "Tuvalu:TV", "Uganda:UG", "Ukraine:UA", "United Arab Emirates:AE", "United States Minor Outlying Islands:UM", "Uruguay:UY", "Uzbekistan:UZ", "Vanuatu:VU", "Vatican:VA", "Venezuela:VE", "Viet Nam:VN", "Virgin Islands (British):VG", "Virgin Islands (U.S.):VI", "Wallis and Futuna Islands:WF", "Western Sahara:EH", "Yemen:YE", "Zambia:ZM", "Zimbabwe:ZW"})
+        Me.ComboBoxGL.Location = New System.Drawing.Point(97, 56)
+        Me.ComboBoxGL.Name = "ComboBoxGL"
+        Me.ComboBoxGL.Size = New System.Drawing.Size(213, 21)
+        Me.ComboBoxGL.TabIndex = 4
+        '
         'LabelCountry
         '
         Me.LabelCountry.AutoSize = True
-        Me.LabelCountry.Location = New System.Drawing.Point(9, 48)
+        Me.LabelCountry.Location = New System.Drawing.Point(9, 57)
         Me.LabelCountry.Name = "LabelCountry"
         Me.LabelCountry.Size = New System.Drawing.Size(52, 13)
         Me.LabelCountry.TabIndex = 20
@@ -423,7 +437,7 @@ Partial Class Form1
         Me.ComboBoxKeywordType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxKeywordType.FormattingEnabled = True
         Me.ComboBoxKeywordType.Items.AddRange(New Object() {"Exact", "Broad", "Phrase"})
-        Me.ComboBoxKeywordType.Location = New System.Drawing.Point(330, 13)
+        Me.ComboBoxKeywordType.Location = New System.Drawing.Point(330, 22)
         Me.ComboBoxKeywordType.Name = "ComboBoxKeywordType"
         Me.ComboBoxKeywordType.Size = New System.Drawing.Size(74, 21)
         Me.ComboBoxKeywordType.TabIndex = 6
@@ -431,7 +445,7 @@ Partial Class Form1
         'LabelKeywordType
         '
         Me.LabelKeywordType.AutoSize = True
-        Me.LabelKeywordType.Location = New System.Drawing.Point(246, 16)
+        Me.LabelKeywordType.Location = New System.Drawing.Point(246, 25)
         Me.LabelKeywordType.Name = "LabelKeywordType"
         Me.LabelKeywordType.Size = New System.Drawing.Size(78, 13)
         Me.LabelKeywordType.TabIndex = 5
@@ -439,7 +453,7 @@ Partial Class Form1
         '
         'TextBoxSeedKeyword
         '
-        Me.TextBoxSeedKeyword.Location = New System.Drawing.Point(97, 13)
+        Me.TextBoxSeedKeyword.Location = New System.Drawing.Point(97, 22)
         Me.TextBoxSeedKeyword.Name = "TextBoxSeedKeyword"
         Me.TextBoxSeedKeyword.Size = New System.Drawing.Size(131, 20)
         Me.TextBoxSeedKeyword.TabIndex = 4
@@ -447,41 +461,48 @@ Partial Class Form1
         'LabelSeedKW
         '
         Me.LabelSeedKW.AutoSize = True
-        Me.LabelSeedKW.Location = New System.Drawing.Point(9, 16)
+        Me.LabelSeedKW.Location = New System.Drawing.Point(9, 25)
         Me.LabelSeedKW.Name = "LabelSeedKW"
         Me.LabelSeedKW.Size = New System.Drawing.Size(79, 13)
         Me.LabelSeedKW.TabIndex = 3
         Me.LabelSeedKW.Text = "Seed Keyword:"
         '
-        'CollapsiblePanelGenerateKW
+        'WebBrowser1
         '
-        Me.CollapsiblePanelGenerateKW.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CollapsiblePanelGenerateKW.BackColor = System.Drawing.SystemColors.Control
-        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.LabelStatus)
-        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.GroupBoxGenerateKW)
-        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.GroupBoxFilter)
-        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.GroupBoxGenerateCount)
-        Me.CollapsiblePanelGenerateKW.Controls.Add(Me.GroupBoxExport)
-        Me.CollapsiblePanelGenerateKW.EndColour = System.Drawing.SystemColors.MenuBar
-        Me.CollapsiblePanelGenerateKW.Image = Nothing
-        Me.CollapsiblePanelGenerateKW.Location = New System.Drawing.Point(8, 8)
-        Me.CollapsiblePanelGenerateKW.Name = "CollapsiblePanelGenerateKW"
-        Me.CollapsiblePanelGenerateKW.PanelState = Salamander.Windows.Forms.PanelState.Expanded
-        Me.CollapsiblePanelGenerateKW.Size = New System.Drawing.Size(451, 379)
-        Me.CollapsiblePanelGenerateKW.StartColour = System.Drawing.SystemColors.Window
-        Me.CollapsiblePanelGenerateKW.TabIndex = 0
-        Me.CollapsiblePanelGenerateKW.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CollapsiblePanelGenerateKW.TitleFontColour = System.Drawing.Color.Navy
-        Me.CollapsiblePanelGenerateKW.TitleText = "Options"
+        Me.WebBrowser1.Location = New System.Drawing.Point(398, -13)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Name = "WebBrowser1"
+        Me.WebBrowser1.ScriptErrorsSuppressed = True
+        Me.WebBrowser1.Size = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.TabIndex = 28
+        Me.WebBrowser1.Visible = False
         '
-        'LabelStatus
+        'GroupBoxExport
         '
-        Me.LabelStatus.Location = New System.Drawing.Point(12, 335)
-        Me.LabelStatus.Name = "LabelStatus"
-        Me.LabelStatus.Size = New System.Drawing.Size(421, 33)
-        Me.LabelStatus.TabIndex = 24
-        Me.LabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.GroupBoxExport.Controls.Add(Me.TextBoxExport)
+        Me.GroupBoxExport.Controls.Add(Me.ButtonExport)
+        Me.GroupBoxExport.Location = New System.Drawing.Point(16, 131)
+        Me.GroupBoxExport.Name = "GroupBoxExport"
+        Me.GroupBoxExport.Size = New System.Drawing.Size(418, 57)
+        Me.GroupBoxExport.TabIndex = 21
+        Me.GroupBoxExport.TabStop = False
+        Me.GroupBoxExport.Text = "Export"
+        '
+        'TextBoxExport
+        '
+        Me.TextBoxExport.Location = New System.Drawing.Point(121, 21)
+        Me.TextBoxExport.Name = "TextBoxExport"
+        Me.TextBoxExport.Size = New System.Drawing.Size(263, 20)
+        Me.TextBoxExport.TabIndex = 28
+        '
+        'ButtonExport
+        '
+        Me.ButtonExport.Location = New System.Drawing.Point(12, 19)
+        Me.ButtonExport.Name = "ButtonExport"
+        Me.ButtonExport.Size = New System.Drawing.Size(91, 23)
+        Me.ButtonExport.TabIndex = 27
+        Me.ButtonExport.Text = "Export"
+        Me.ButtonExport.UseVisualStyleBackColor = True
         '
         'CollapsiblePanelBar1
         '
@@ -491,7 +512,7 @@ Partial Class Form1
         Me.CollapsiblePanelBar1.Controls.Add(Me.CollapsiblePanelGenerateKW)
         Me.CollapsiblePanelBar1.Location = New System.Drawing.Point(3, 4)
         Me.CollapsiblePanelBar1.Name = "CollapsiblePanelBar1"
-        Me.CollapsiblePanelBar1.Size = New System.Drawing.Size(467, 422)
+        Me.CollapsiblePanelBar1.Size = New System.Drawing.Size(469, 492)
         Me.CollapsiblePanelBar1.Spacing = 8
         Me.CollapsiblePanelBar1.TabIndex = 28
         '
@@ -509,10 +530,10 @@ Partial Class Form1
         Me.CollapsiblePanelResults.Controls.Add(Me.ListViewCSV)
         Me.CollapsiblePanelResults.EndColour = System.Drawing.SystemColors.MenuBar
         Me.CollapsiblePanelResults.Image = Nothing
-        Me.CollapsiblePanelResults.Location = New System.Drawing.Point(8, 395)
+        Me.CollapsiblePanelResults.Location = New System.Drawing.Point(8, 465)
         Me.CollapsiblePanelResults.Name = "CollapsiblePanelResults"
         Me.CollapsiblePanelResults.PanelState = Salamander.Windows.Forms.PanelState.Expanded
-        Me.CollapsiblePanelResults.Size = New System.Drawing.Size(451, 381)
+        Me.CollapsiblePanelResults.Size = New System.Drawing.Size(453, 459)
         Me.CollapsiblePanelResults.StartColour = System.Drawing.SystemColors.Window
         Me.CollapsiblePanelResults.TabIndex = 1
         Me.CollapsiblePanelResults.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -573,15 +594,24 @@ Partial Class Form1
         Me.ListViewCSV.ContextMenuStrip = Me.CMForLV
         Me.ListViewCSV.Location = New System.Drawing.Point(5, 59)
         Me.ListViewCSV.Name = "ListViewCSV"
-        Me.ListViewCSV.Size = New System.Drawing.Size(443, 319)
+        Me.ListViewCSV.Size = New System.Drawing.Size(445, 397)
         Me.ListViewCSV.TabIndex = 26
         Me.ListViewCSV.UseCompatibleStateImageBehavior = False
+        '
+        'PanelOptions
+        '
+        Me.PanelOptions.Controls.Add(Me.GroupBoxGenerateCount)
+        Me.PanelOptions.Controls.Add(Me.GroupBoxFilter)
+        Me.PanelOptions.Location = New System.Drawing.Point(1, 225)
+        Me.PanelOptions.Name = "PanelOptions"
+        Me.PanelOptions.Size = New System.Drawing.Size(452, 184)
+        Me.PanelOptions.TabIndex = 26
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(473, 475)
+        Me.ClientSize = New System.Drawing.Size(475, 519)
         Me.Controls.Add(Me.CollapsiblePanelBar1)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -592,8 +622,6 @@ Partial Class Form1
         Me.GroupBoxGenerateCount.ResumeLayout(False)
         Me.GroupBoxGenerateCount.PerformLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBoxExport.ResumeLayout(False)
-        Me.GroupBoxExport.PerformLayout()
         Me.CMForLV.ResumeLayout(False)
         Me.GroupBoxFilter.ResumeLayout(False)
         Me.GroupBoxFilter.PerformLayout()
@@ -603,20 +631,22 @@ Partial Class Form1
         CType(Me.SBAvgMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SBApproxMax, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SBApproxMin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.CollapsiblePanelGenerateKW.ResumeLayout(False)
+        Me.CollapsiblePanelOptions.ResumeLayout(False)
         Me.GroupBoxGenerateKW.ResumeLayout(False)
         Me.GroupBoxGenerateKW.PerformLayout()
-        Me.CollapsiblePanelGenerateKW.ResumeLayout(False)
+        Me.GroupBoxExport.ResumeLayout(False)
+        Me.GroupBoxExport.PerformLayout()
         CType(Me.CollapsiblePanelBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CollapsiblePanelBar1.ResumeLayout(False)
         Me.CollapsiblePanelResults.ResumeLayout(False)
+        Me.PanelOptions.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBoxGenerateCount As System.Windows.Forms.GroupBox
     Friend WithEvents SpinBoxThrottle As System.Windows.Forms.NumericUpDown
     Friend WithEvents LabelThrottle As System.Windows.Forms.Label
-    Friend WithEvents GroupBoxExport As System.Windows.Forms.GroupBox
-    Friend WithEvents WebBrowser1 As System.Windows.Forms.WebBrowser
     Friend WithEvents SaveFileDlg As System.Windows.Forms.SaveFileDialog
     Friend WithEvents GroupBoxFilter As System.Windows.Forms.GroupBox
     Friend WithEvents LabelFilterLower As System.Windows.Forms.Label
@@ -629,18 +659,8 @@ Partial Class Form1
     Friend WithEvents ButtonShowOriginal As System.Windows.Forms.Button
     Friend WithEvents SBCntMin As System.Windows.Forms.NumericUpDown
     Friend WithEvents SBCntMax As System.Windows.Forms.NumericUpDown
-    Friend WithEvents ComboBoxGL As System.Windows.Forms.ComboBox
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
-    Friend WithEvents GroupBoxGenerateKW As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelCountry As System.Windows.Forms.Label
-    Friend WithEvents ComboBoxKeywordType As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelKeywordType As System.Windows.Forms.Label
-    Friend WithEvents TextBoxSeedKeyword As System.Windows.Forms.TextBox
-    Friend WithEvents LabelSeedKW As System.Windows.Forms.Label
     Friend WithEvents ButtonProcess As System.Windows.Forms.Button
-    Friend WithEvents TextBoxExport As System.Windows.Forms.TextBox
-    Friend WithEvents ButtonExport As System.Windows.Forms.Button
-    Friend WithEvents ButtonGenerateKW As System.Windows.Forms.Button
     Friend WithEvents CheckBoxFilterCount As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxFilterAvg As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBoxFilterApprox As System.Windows.Forms.CheckBox
@@ -661,5 +681,19 @@ Partial Class Form1
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents ButtonExport As System.Windows.Forms.Button
+    Friend WithEvents TextBoxExport As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBoxExport As System.Windows.Forms.GroupBox
+    Friend WithEvents WebBrowser1 As System.Windows.Forms.WebBrowser
+    Friend WithEvents LabelSeedKW As System.Windows.Forms.Label
+    Friend WithEvents TextBoxSeedKeyword As System.Windows.Forms.TextBox
+    Friend WithEvents LabelKeywordType As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxKeywordType As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelCountry As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxGL As System.Windows.Forms.ComboBox
+    Friend WithEvents ButtonGenerateKW As System.Windows.Forms.Button
+    Friend WithEvents GroupBoxGenerateKW As System.Windows.Forms.GroupBox
+    Friend WithEvents CollapsiblePanelOptions As Salamander.Windows.Forms.CollapsiblePanel
+    Friend WithEvents PanelOptions As System.Windows.Forms.Panel
 
 End Class
