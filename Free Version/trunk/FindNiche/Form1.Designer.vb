@@ -71,9 +71,9 @@ Partial Class Form1
         Me.ListViewCSV = New System.Windows.Forms.ListView
         Me.CollapsiblePanelBar2 = New Salamander.Windows.Forms.CollapsiblePanelBar
         Me.CollapsiblePanelResult = New Salamander.Windows.Forms.CollapsiblePanel
+        Me.CollapsiblePanelFilter = New Salamander.Windows.Forms.CollapsiblePanel
         Me.CollapsiblePanelSW = New Salamander.Windows.Forms.CollapsiblePanel
         Me.LabelStatus = New System.Windows.Forms.Label
-        Me.CollapsiblePanelFilter = New Salamander.Windows.Forms.CollapsiblePanel
         Me.GroupBoxGenerateCount.SuspendLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CMForLV.SuspendLayout()
@@ -89,8 +89,8 @@ Partial Class Form1
         CType(Me.CollapsiblePanelBar2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CollapsiblePanelBar2.SuspendLayout()
         Me.CollapsiblePanelResult.SuspendLayout()
-        Me.CollapsiblePanelSW.SuspendLayout()
         Me.CollapsiblePanelFilter.SuspendLayout()
+        Me.CollapsiblePanelSW.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBoxGenerateCount
@@ -530,16 +530,16 @@ Partial Class Form1
         '
         Me.CollapsiblePanelResult.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CollapsiblePanelResult.BackColor = System.Drawing.Color.AliceBlue
+        Me.CollapsiblePanelResult.BackColor = System.Drawing.SystemColors.Control
         Me.CollapsiblePanelResult.Controls.Add(Me.Button1)
         Me.CollapsiblePanelResult.Controls.Add(Me.Button5)
         Me.CollapsiblePanelResult.Controls.Add(Me.Button2)
         Me.CollapsiblePanelResult.Controls.Add(Me.ListViewCSV)
         Me.CollapsiblePanelResult.Controls.Add(Me.Button4)
         Me.CollapsiblePanelResult.Controls.Add(Me.Button3)
-        Me.CollapsiblePanelResult.EndColour = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.CollapsiblePanelResult.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelResult.Image = Nothing
-        Me.CollapsiblePanelResult.Location = New System.Drawing.Point(9, 469)
+        Me.CollapsiblePanelResult.Location = New System.Drawing.Point(8, 666)
         Me.CollapsiblePanelResult.Name = "CollapsiblePanelResult"
         Me.CollapsiblePanelResult.PanelState = Salamander.Windows.Forms.PanelState.Expanded
         Me.CollapsiblePanelResult.Size = New System.Drawing.Size(442, 226)
@@ -549,15 +549,34 @@ Partial Class Form1
         Me.CollapsiblePanelResult.TitleFontColour = System.Drawing.Color.Navy
         Me.CollapsiblePanelResult.TitleText = "Result"
         '
+        'CollapsiblePanelFilter
+        '
+        Me.CollapsiblePanelFilter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CollapsiblePanelFilter.BackColor = System.Drawing.SystemColors.Control
+        Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxGenerateCount)
+        Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxFilter)
+        Me.CollapsiblePanelFilter.EndColour = System.Drawing.SystemColors.Menu
+        Me.CollapsiblePanelFilter.Image = Nothing
+        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 438)
+        Me.CollapsiblePanelFilter.Name = "CollapsiblePanelFilter"
+        Me.CollapsiblePanelFilter.PanelState = Salamander.Windows.Forms.PanelState.Expanded
+        Me.CollapsiblePanelFilter.Size = New System.Drawing.Size(442, 220)
+        Me.CollapsiblePanelFilter.StartColour = System.Drawing.Color.White
+        Me.CollapsiblePanelFilter.TabIndex = 1
+        Me.CollapsiblePanelFilter.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CollapsiblePanelFilter.TitleFontColour = System.Drawing.Color.Navy
+        Me.CollapsiblePanelFilter.TitleText = "Filter"
+        '
         'CollapsiblePanelSW
         '
         Me.CollapsiblePanelSW.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CollapsiblePanelSW.BackColor = System.Drawing.Color.AliceBlue
+        Me.CollapsiblePanelSW.BackColor = System.Drawing.SystemColors.Control
         Me.CollapsiblePanelSW.Controls.Add(Me.GroupBoxGenerateKW)
         Me.CollapsiblePanelSW.Controls.Add(Me.GroupBoxExport)
         Me.CollapsiblePanelSW.Controls.Add(Me.LabelStatus)
-        Me.CollapsiblePanelSW.EndColour = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.CollapsiblePanelSW.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelSW.Image = Nothing
         Me.CollapsiblePanelSW.Location = New System.Drawing.Point(8, 8)
         Me.CollapsiblePanelSW.Name = "CollapsiblePanelSW"
@@ -576,25 +595,6 @@ Partial Class Form1
         Me.LabelStatus.Size = New System.Drawing.Size(421, 33)
         Me.LabelStatus.TabIndex = 24
         Me.LabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'CollapsiblePanelFilter
-        '
-        Me.CollapsiblePanelFilter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CollapsiblePanelFilter.BackColor = System.Drawing.Color.AliceBlue
-        Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxGenerateCount)
-        Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxFilter)
-        Me.CollapsiblePanelFilter.EndColour = System.Drawing.Color.FromArgb(CType(CType(199, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.CollapsiblePanelFilter.Image = Nothing
-        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 436)
-        Me.CollapsiblePanelFilter.Name = "CollapsiblePanelFilter"
-        Me.CollapsiblePanelFilter.PanelState = Salamander.Windows.Forms.PanelState.Expanded
-        Me.CollapsiblePanelFilter.Size = New System.Drawing.Size(442, 220)
-        Me.CollapsiblePanelFilter.StartColour = System.Drawing.Color.White
-        Me.CollapsiblePanelFilter.TabIndex = 1
-        Me.CollapsiblePanelFilter.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CollapsiblePanelFilter.TitleFontColour = System.Drawing.Color.Navy
-        Me.CollapsiblePanelFilter.TitleText = "Filter"
         '
         'Form1
         '
@@ -627,8 +627,8 @@ Partial Class Form1
         CType(Me.CollapsiblePanelBar2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CollapsiblePanelBar2.ResumeLayout(False)
         Me.CollapsiblePanelResult.ResumeLayout(False)
-        Me.CollapsiblePanelSW.ResumeLayout(False)
         Me.CollapsiblePanelFilter.ResumeLayout(False)
+        Me.CollapsiblePanelSW.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
