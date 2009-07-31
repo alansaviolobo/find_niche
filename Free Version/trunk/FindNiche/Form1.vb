@@ -48,7 +48,34 @@ Public Class Form1
         ComboBoxGL.SelectedIndex = 0
         SetUIState(Status.INIT)
         If My.Computer.FileSystem.FileExists(ErrorFile) Then My.Computer.FileSystem.DeleteFile(ErrorFile)
-        CollapsiblePanelResults.PanelState = PanelState.Collapsed
+        CollapsiblePanelSW.PanelState = PanelState.Expanded
+        CollapsiblePanelResult.PanelState = PanelState.Collapsed
+        CollapsiblePanelFilter.PanelState = PanelState.Collapsed
+        CollapsiblePanelResult.Height = 226
+    End Sub
+
+    Private Sub CollapsiblePanelSW_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelSW.PanelStateChanged
+        If CollapsiblePanelSW.PanelState = PanelState.Expanded Then
+            CollapsiblePanelResult.PanelState = PanelState.Collapsed
+            CollapsiblePanelFilter.PanelState = PanelState.Collapsed
+            CollapsiblePanelResult.Height = 226
+        ElseIf CollapsiblePanelSW.PanelState = PanelState.Collapsed Then
+            CollapsiblePanelResult.Height = 226
+            CollapsiblePanelResult.PanelState = PanelState.Expanded
+            CollapsiblePanelFilter.PanelState = PanelState.Expanded
+        End If
+    End Sub
+
+    Private Sub CollapsiblePanelFilter_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelFilter.PanelStateChanged
+        If CollapsiblePanelFilter.PanelState = PanelState.Expanded Then
+            CollapsiblePanelResult.Height = 226
+            'CollapsiblePanelSW.PanelState = PanelState.Collapsed
+            CollapsiblePanelResult.PanelState = PanelState.Expanded
+        ElseIf CollapsiblePanelFilter.PanelState = PanelState.Collapsed Then
+            'CollapsiblePanelSW.PanelState = PanelState.Collapsed
+            CollapsiblePanelResult.PanelState = PanelState.Expanded
+            CollapsiblePanelResult.Height = 422
+        End If
     End Sub
 
     Private Sub Form1_Closing(ByVal sender As System.Object, ByVal e As Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -587,11 +614,6 @@ Leave:
     End Sub
 
 
-    Private Sub ButtonFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonFilter.Click
-        FilterList()
-        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
-    End Sub
-
     Private Sub FilterList()
         LabelStatus.Text = "Filtering list..."
 
@@ -722,8 +744,9 @@ Leave:
             SetUIState(Status.INIT)
         End If
         MsgBox(LabelStatus.Text)
-        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed 
-
+        CollapsiblePanelSW.PanelState = PanelState.Collapsed
+        CollapsiblePanelResult.PanelState = PanelState.Expanded
+        CollapsiblePanelFilter.PanelState = PanelState.Expanded
     End Sub
 
     Private Function ValidateGK() As Boolean
@@ -1098,7 +1121,6 @@ Leave:
 
     Private Sub ButtonShowOriginal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonShowOriginal.Click
         PopulateListView(InputCSVContents)
-        CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
     End Sub
 
     Private Sub ButtonPR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonPR.Click
@@ -1215,36 +1237,4 @@ Leave:
             Nap(3)
         Next i
     End Sub
-
-    Private Sub CollapsiblePanelGenerateKW_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelGenerateKW.PanelStateChanged
-        If CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed Then
-            CollapsiblePanelResults.PanelState = PanelState.Expanded
-        ElseIf CollapsiblePanelGenerateKW.PanelState = PanelState.Expanded Then
-            CollapsiblePanelResults.PanelState = PanelState.Collapsed
-        End If
-    End Sub
-
-    Private Sub CollapsiblePanelResults_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelResults.PanelStateChanged
-        If CollapsiblePanelResults.PanelState = PanelState.Collapsed Then
-            CollapsiblePanelGenerateKW.PanelState = PanelState.Expanded
-        ElseIf CollapsiblePanelResults.PanelState = PanelState.Expanded Then
-            CollapsiblePanelGenerateKW.PanelState = PanelState.Collapsed
-        End If
-    End Sub
-
-    Private Sub CollapsiblePanelOptions_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelOptions.PanelStateChanged
-        If CollapsiblePanelOptions.PanelState = PanelState.Collapsed Then
-            PanelOptions.Location = New Point(1, 62)
-        ElseIf CollapsiblePanelOptions.PanelState = PanelState.Expanded Then
-            PanelOptions.Location = New Point(1, 224)
-        End If
-    End Sub
 End Class
-
-
-
-
-
-
-
-
