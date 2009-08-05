@@ -69,7 +69,7 @@ Public Class Form1
     Private Sub CollapsiblePanelFilter_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelFilter.PanelStateChanged
         If CollapsiblePanelFilter.PanelState = PanelState.Expanded Then
             CollapsiblePanelResult.Height = 226
-            'CollapsiblePanelSW.PanelState = PanelState.Collapsed
+            CollapsiblePanelSW.PanelState = PanelState.Collapsed
             CollapsiblePanelResult.PanelState = PanelState.Expanded
         ElseIf CollapsiblePanelFilter.PanelState = PanelState.Collapsed Then
             'CollapsiblePanelSW.PanelState = PanelState.Collapsed
@@ -1236,5 +1236,9 @@ Leave:
             ListViewCSV.Items(i).Checked = Not ListViewCSV.Items(i).Checked
             Nap(3)
         Next i
+    End Sub
+
+    Private Sub ButtonFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonFilter.Click
+        FilterList()
     End Sub
 End Class

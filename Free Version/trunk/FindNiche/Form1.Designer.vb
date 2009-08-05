@@ -539,7 +539,7 @@ Partial Class Form1
         Me.CollapsiblePanelResult.Controls.Add(Me.Button3)
         Me.CollapsiblePanelResult.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelResult.Image = Nothing
-        Me.CollapsiblePanelResult.Location = New System.Drawing.Point(8, 666)
+        Me.CollapsiblePanelResult.Location = New System.Drawing.Point(8, 668)
         Me.CollapsiblePanelResult.Name = "CollapsiblePanelResult"
         Me.CollapsiblePanelResult.PanelState = Salamander.Windows.Forms.PanelState.Expanded
         Me.CollapsiblePanelResult.Size = New System.Drawing.Size(442, 226)
@@ -558,10 +558,10 @@ Partial Class Form1
         Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxFilter)
         Me.CollapsiblePanelFilter.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelFilter.Image = Nothing
-        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 438)
+        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 466)
         Me.CollapsiblePanelFilter.Name = "CollapsiblePanelFilter"
         Me.CollapsiblePanelFilter.PanelState = Salamander.Windows.Forms.PanelState.Expanded
-        Me.CollapsiblePanelFilter.Size = New System.Drawing.Size(442, 220)
+        Me.CollapsiblePanelFilter.Size = New System.Drawing.Size(442, 222)
         Me.CollapsiblePanelFilter.StartColour = System.Drawing.Color.White
         Me.CollapsiblePanelFilter.TabIndex = 1
         Me.CollapsiblePanelFilter.TitleFont = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
