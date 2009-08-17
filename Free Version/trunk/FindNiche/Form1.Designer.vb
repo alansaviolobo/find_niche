@@ -73,7 +73,12 @@ Partial Class Form1
         Me.CollapsiblePanelResult = New Salamander.Windows.Forms.CollapsiblePanel
         Me.CollapsiblePanelFilter = New Salamander.Windows.Forms.CollapsiblePanel
         Me.CollapsiblePanelSW = New Salamander.Windows.Forms.CollapsiblePanel
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.ButtonImport = New System.Windows.Forms.Button
+        Me.TextBoxImport = New System.Windows.Forms.TextBox
+        Me.ButtonSelectFile = New System.Windows.Forms.Button
         Me.LabelStatus = New System.Windows.Forms.Label
+        Me.OpenFileDlg = New System.Windows.Forms.OpenFileDialog
         Me.GroupBoxGenerateCount.SuspendLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CMForLV.SuspendLayout()
@@ -91,6 +96,7 @@ Partial Class Form1
         Me.CollapsiblePanelResult.SuspendLayout()
         Me.CollapsiblePanelFilter.SuspendLayout()
         Me.CollapsiblePanelSW.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBoxGenerateCount
@@ -432,7 +438,7 @@ Partial Class Form1
         '
         Me.GroupBoxExport.Controls.Add(Me.TextBoxExport)
         Me.GroupBoxExport.Controls.Add(Me.ButtonExport)
-        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 121)
+        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 185)
         Me.GroupBoxExport.Name = "GroupBoxExport"
         Me.GroupBoxExport.Size = New System.Drawing.Size(418, 57)
         Me.GroupBoxExport.TabIndex = 21
@@ -441,14 +447,14 @@ Partial Class Form1
         '
         'TextBoxExport
         '
-        Me.TextBoxExport.Location = New System.Drawing.Point(121, 21)
+        Me.TextBoxExport.Location = New System.Drawing.Point(132, 21)
         Me.TextBoxExport.Name = "TextBoxExport"
         Me.TextBoxExport.Size = New System.Drawing.Size(263, 20)
         Me.TextBoxExport.TabIndex = 28
         '
         'ButtonExport
         '
-        Me.ButtonExport.Location = New System.Drawing.Point(12, 19)
+        Me.ButtonExport.Location = New System.Drawing.Point(23, 19)
         Me.ButtonExport.Name = "ButtonExport"
         Me.ButtonExport.Size = New System.Drawing.Size(91, 23)
         Me.ButtonExport.TabIndex = 27
@@ -558,7 +564,7 @@ Partial Class Form1
         Me.CollapsiblePanelFilter.Controls.Add(Me.GroupBoxFilter)
         Me.CollapsiblePanelFilter.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelFilter.Image = Nothing
-        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 466)
+        Me.CollapsiblePanelFilter.Location = New System.Drawing.Point(8, 438)
         Me.CollapsiblePanelFilter.Name = "CollapsiblePanelFilter"
         Me.CollapsiblePanelFilter.PanelState = Salamander.Windows.Forms.PanelState.Expanded
         Me.CollapsiblePanelFilter.Size = New System.Drawing.Size(442, 222)
@@ -574,8 +580,9 @@ Partial Class Form1
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CollapsiblePanelSW.BackColor = System.Drawing.SystemColors.Control
         Me.CollapsiblePanelSW.Controls.Add(Me.GroupBoxGenerateKW)
-        Me.CollapsiblePanelSW.Controls.Add(Me.GroupBoxExport)
+        Me.CollapsiblePanelSW.Controls.Add(Me.GroupBox1)
         Me.CollapsiblePanelSW.Controls.Add(Me.LabelStatus)
+        Me.CollapsiblePanelSW.Controls.Add(Me.GroupBoxExport)
         Me.CollapsiblePanelSW.EndColour = System.Drawing.SystemColors.Menu
         Me.CollapsiblePanelSW.Image = Nothing
         Me.CollapsiblePanelSW.Location = New System.Drawing.Point(8, 8)
@@ -588,6 +595,43 @@ Partial Class Form1
         Me.CollapsiblePanelSW.TitleFontColour = System.Drawing.Color.Navy
         Me.CollapsiblePanelSW.TitleText = "Seed Word"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.ButtonImport)
+        Me.GroupBox1.Controls.Add(Me.TextBoxImport)
+        Me.GroupBox1.Controls.Add(Me.ButtonSelectFile)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 122)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(418, 57)
+        Me.GroupBox1.TabIndex = 29
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Import"
+        '
+        'ButtonImport
+        '
+        Me.ButtonImport.Location = New System.Drawing.Point(327, 23)
+        Me.ButtonImport.Name = "ButtonImport"
+        Me.ButtonImport.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonImport.TabIndex = 2
+        Me.ButtonImport.Text = "Import"
+        Me.ButtonImport.UseVisualStyleBackColor = True
+        '
+        'TextBoxImport
+        '
+        Me.TextBoxImport.Location = New System.Drawing.Point(98, 24)
+        Me.TextBoxImport.Name = "TextBoxImport"
+        Me.TextBoxImport.Size = New System.Drawing.Size(222, 20)
+        Me.TextBoxImport.TabIndex = 1
+        '
+        'ButtonSelectFile
+        '
+        Me.ButtonSelectFile.Location = New System.Drawing.Point(16, 23)
+        Me.ButtonSelectFile.Name = "ButtonSelectFile"
+        Me.ButtonSelectFile.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonSelectFile.TabIndex = 0
+        Me.ButtonSelectFile.Text = "Select File"
+        Me.ButtonSelectFile.UseVisualStyleBackColor = True
+        '
         'LabelStatus
         '
         Me.LabelStatus.Location = New System.Drawing.Point(9, 378)
@@ -595,6 +639,13 @@ Partial Class Form1
         Me.LabelStatus.Size = New System.Drawing.Size(421, 33)
         Me.LabelStatus.TabIndex = 24
         Me.LabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'OpenFileDlg
+        '
+        Me.OpenFileDlg.AddExtension = False
+        Me.OpenFileDlg.DefaultExt = "csv"
+        Me.OpenFileDlg.Filter = "CSV files|*.csv"
+        Me.OpenFileDlg.Title = "Select CSV File"
         '
         'Form1
         '
@@ -629,6 +680,8 @@ Partial Class Form1
         Me.CollapsiblePanelResult.ResumeLayout(False)
         Me.CollapsiblePanelFilter.ResumeLayout(False)
         Me.CollapsiblePanelSW.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -682,5 +735,10 @@ Partial Class Form1
     Friend WithEvents CollapsiblePanelResult As Salamander.Windows.Forms.CollapsiblePanel
     Friend WithEvents LabelStatus As System.Windows.Forms.Label
     Friend WithEvents CollapsiblePanelFilter As Salamander.Windows.Forms.CollapsiblePanel
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents OpenFileDlg As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents ButtonImport As System.Windows.Forms.Button
+    Friend WithEvents TextBoxImport As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSelectFile As System.Windows.Forms.Button
 
 End Class
