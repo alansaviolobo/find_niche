@@ -257,7 +257,7 @@ Leave:
         Dim i As Integer, j As Integer
         Dim CH As ColumnHeader
 
-        Dim IC As Integer = 1
+        Dim IC As Integer = 0
         IsHTTP = False
         'If TextBoxCSVFile.Text.ToLower.Contains("-http.") Then
         '    CH = New ColumnHeader()
@@ -329,7 +329,7 @@ Leave:
         'SBAvgMin.Value = 0
         'SBAvgMax.Value = 0
 
-        For i = 0 To row.Length - 1
+        For i = 1 To row.Length - 1
             If row(i) = vbNullString Then Continue For
             row(i) = row(i).Trim
             If row(i) = vbNullString Then Continue For
@@ -1240,5 +1240,27 @@ Leave:
 
     Private Sub ButtonFilter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonFilter.Click
         FilterList()
+    End Sub
+
+    Private Sub ButtonSelectFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSelectFile.Click
+        OpenFileDlg.ShowDialog()
+        TextBoxImport.Text = OpenFileDlg.FileName.ToString()
+    End Sub
+
+    Private Sub ButtonImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonImport.Click
+        Dim sr As New System.IO.StreamReader(TextBoxImport.Text)
+
+        Dim plainString As String = ""
+
+        Do While sr.Peek <> -1
+            plainString += sr.ReadLine() + vbNewLine
+        Loop
+
+        SetUIState(Status.KW_GENERATED)
+        CollapsiblePanelSW.PanelState = PanelState.Collapsed
+        CollapsiblePanelResult.PanelState = PanelState.Expanded
+        CollapsiblePanelFilter.PanelState = PanelState.Expanded
+        PopulateListView(plainString)
+
     End Sub
 End Class
