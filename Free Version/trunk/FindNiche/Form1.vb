@@ -31,6 +31,7 @@ Public Class Form1
     Private ErrorURL As String
     Private LoadedURL As String
     Private ErrorLoadingURL As Boolean
+    Public IC As Integer
 
     Private Enum Status
         INIT
@@ -257,7 +258,7 @@ Leave:
         Dim i As Integer, j As Integer
         Dim CH As ColumnHeader
 
-        Dim IC As Integer = 0
+        'Dim IC As Integer = 0
         IsHTTP = False
         'If TextBoxCSVFile.Text.ToLower.Contains("-http.") Then
         '    CH = New ColumnHeader()
@@ -805,7 +806,7 @@ Leave:
             GoTo Leave
         End If
         InputCSVContents = GoogleKWList
-
+        IC = 1
         RetVal = PopulateListView(GoogleKWList)
         If RetVal = False Then
             GoTo Leave
@@ -1257,6 +1258,7 @@ Leave:
         Loop
 
         SetUIState(Status.KW_GENERATED)
+        IC = 0
         CollapsiblePanelSW.PanelState = PanelState.Collapsed
         CollapsiblePanelResult.PanelState = PanelState.Expanded
         CollapsiblePanelFilter.PanelState = PanelState.Expanded
