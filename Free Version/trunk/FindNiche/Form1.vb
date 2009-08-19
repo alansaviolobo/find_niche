@@ -242,7 +242,11 @@ Leave:
 
         Dim Retval As Boolean = False
 
-        ListViewCSV.Clear()
+        If CheckBoxAIR.Checked Or CheckBoxAGKWR.Checked Then
+            'do nothing
+        ElseIf CheckBoxAIR.Checked.Equals(False) Or CheckBoxAGKWR.Checked.Equals(False) Then
+            ListViewCSV.Clear()
+        End If
 
         ListViewCSV.View = View.Details
 
@@ -258,67 +262,69 @@ Leave:
         Dim i As Integer, j As Integer
         Dim CH As ColumnHeader
 
-        'Dim IC As Integer = 0
-        IsHTTP = False
-        'If TextBoxCSVFile.Text.ToLower.Contains("-http.") Then
-        '    CH = New ColumnHeader()
-        '    CH.Text = "Common"
-        '    Me.ListViewCSV.Columns.Add(CH)
-        '    IC = 2
-        '    IsHTTP = True
-        'End If
+        If ListViewCSV.Items.Count.Equals(0) Then
+            'Dim IC As Integer = 0
+            IsHTTP = False
+            'If TextBoxCSVFile.Text.ToLower.Contains("-http.") Then
+            '    CH = New ColumnHeader()
+            '    CH.Text = "Common"
+            '    Me.ListViewCSV.Columns.Add(CH)
+            '    IC = 2
+            '    IsHTTP = True
+            'End If
 
-        CH = New ColumnHeader()
-        CH.Text = "Keywords"
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "Keywords"
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "Local"
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "Local"
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "Global"
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "Global"
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "Phrase"
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "Phrase"
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "DummyApprox"
-        CH.Width = 0 'invisible
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "DummyApprox"
+            CH.Width = 0 'invisible
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "DummyAverage"
-        CH.Width = 0 'invisible
-        Me.ListViewCSV.Columns.Add(CH)
+            CH = New ColumnHeader()
+            CH.Text = "DummyAverage"
+            CH.Width = 0 'invisible
+            Me.ListViewCSV.Columns.Add(CH)
 
-        CH = New ColumnHeader()
-        CH.Text = "DummyCount"
-        CH.Width = 0 'invisible
-        Me.ListViewCSV.Columns.Add(CH)
-        '---------------------------------------------------------------------------
-        'SET INDICES
+            CH = New ColumnHeader()
+            CH.Text = "DummyCount"
+            CH.Width = 0 'invisible
+            Me.ListViewCSV.Columns.Add(CH)
+            '---------------------------------------------------------------------------
+            'SET INDICES
 
-        If IsHTTP = True Then
-            CMN_IDX = 0
-            KWS_IDX = 1
-            APPROX_IDX = 2
-            AVG_IDX = 3
-            CNT_IDX = 4
-            APPROX_DIDX = 5
-            AVG_DIDX = 6
-            CNT_DIDX = 7
-        Else
-            CMN_IDX = -1
-            KWS_IDX = 0
-            APPROX_IDX = 1
-            AVG_IDX = 2
-            CNT_IDX = 3
-            APPROX_DIDX = 4
-            AVG_DIDX = 5
-            CNT_DIDX = 6
+            If IsHTTP = True Then
+                CMN_IDX = 0
+                KWS_IDX = 1
+                APPROX_IDX = 2
+                AVG_IDX = 3
+                CNT_IDX = 4
+                APPROX_DIDX = 5
+                AVG_DIDX = 6
+                CNT_DIDX = 7
+            Else
+                CMN_IDX = -1
+                KWS_IDX = 0
+                APPROX_IDX = 1
+                AVG_IDX = 2
+                CNT_IDX = 3
+                APPROX_DIDX = 4
+                AVG_DIDX = 5
+                CNT_DIDX = 6
+            End If
         End If
         '---------------------------------------------------------------------------
         'ADD ITEMS
@@ -796,7 +802,7 @@ Leave:
 
         SeedKW = TextBoxSeedKeyword.Text.Trim
 
-        ListViewCSV.Items.Clear()
+        'ListViewCSV.Items.Clear()
 
         LabelStatus.Text = "Generating keywords..."
 
@@ -1246,6 +1252,8 @@ Leave:
     Private Sub ButtonSelectFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSelectFile.Click
         OpenFileDlg.ShowDialog()
         TextBoxImport.Text = OpenFileDlg.FileName.ToString()
+        ButtonImport.Enabled = True
+        CheckBoxAIR.Enabled = True
     End Sub
 
     Private Sub ButtonImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonImport.Click
@@ -1259,10 +1267,10 @@ Leave:
 
         SetUIState(Status.KW_GENERATED)
         IC = 0
+        PopulateListView(plainString)
         CollapsiblePanelSW.PanelState = PanelState.Collapsed
         CollapsiblePanelResult.PanelState = PanelState.Expanded
         CollapsiblePanelFilter.PanelState = PanelState.Expanded
-        PopulateListView(plainString)
 
     End Sub
 End Class

@@ -79,6 +79,8 @@ Partial Class Form1
         Me.ButtonSelectFile = New System.Windows.Forms.Button
         Me.LabelStatus = New System.Windows.Forms.Label
         Me.OpenFileDlg = New System.Windows.Forms.OpenFileDialog
+        Me.CheckBoxAGKWR = New System.Windows.Forms.CheckBox
+        Me.CheckBoxAIR = New System.Windows.Forms.CheckBox
         Me.GroupBoxGenerateCount.SuspendLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CMForLV.SuspendLayout()
@@ -346,6 +348,7 @@ Partial Class Form1
         '
         'GroupBoxGenerateKW
         '
+        Me.GroupBoxGenerateKW.Controls.Add(Me.CheckBoxAGKWR)
         Me.GroupBoxGenerateKW.Controls.Add(Me.ButtonGenerateKW)
         Me.GroupBoxGenerateKW.Controls.Add(Me.ComboBoxGL)
         Me.GroupBoxGenerateKW.Controls.Add(Me.LabelCountry)
@@ -356,14 +359,14 @@ Partial Class Form1
         Me.GroupBoxGenerateKW.Controls.Add(Me.WebBrowser1)
         Me.GroupBoxGenerateKW.Location = New System.Drawing.Point(12, 28)
         Me.GroupBoxGenerateKW.Name = "GroupBoxGenerateKW"
-        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 88)
+        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 111)
         Me.GroupBoxGenerateKW.TabIndex = 29
         Me.GroupBoxGenerateKW.TabStop = False
         Me.GroupBoxGenerateKW.Text = "Generate Keyword List"
         '
         'ButtonGenerateKW
         '
-        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 54)
+        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 82)
         Me.ButtonGenerateKW.Name = "ButtonGenerateKW"
         Me.ButtonGenerateKW.Size = New System.Drawing.Size(75, 23)
         Me.ButtonGenerateKW.TabIndex = 23
@@ -438,7 +441,7 @@ Partial Class Form1
         '
         Me.GroupBoxExport.Controls.Add(Me.TextBoxExport)
         Me.GroupBoxExport.Controls.Add(Me.ButtonExport)
-        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 185)
+        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 233)
         Me.GroupBoxExport.Name = "GroupBoxExport"
         Me.GroupBoxExport.Size = New System.Drawing.Size(418, 57)
         Me.GroupBoxExport.TabIndex = 21
@@ -597,19 +600,21 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.CheckBoxAIR)
         Me.GroupBox1.Controls.Add(Me.ButtonImport)
         Me.GroupBox1.Controls.Add(Me.TextBoxImport)
         Me.GroupBox1.Controls.Add(Me.ButtonSelectFile)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 122)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 145)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(418, 57)
+        Me.GroupBox1.Size = New System.Drawing.Size(418, 82)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Import"
         '
         'ButtonImport
         '
-        Me.ButtonImport.Location = New System.Drawing.Point(327, 23)
+        Me.ButtonImport.Enabled = False
+        Me.ButtonImport.Location = New System.Drawing.Point(330, 53)
         Me.ButtonImport.Name = "ButtonImport"
         Me.ButtonImport.Size = New System.Drawing.Size(75, 23)
         Me.ButtonImport.TabIndex = 2
@@ -618,7 +623,7 @@ Partial Class Form1
         '
         'TextBoxImport
         '
-        Me.TextBoxImport.Location = New System.Drawing.Point(98, 24)
+        Me.TextBoxImport.Location = New System.Drawing.Point(97, 25)
         Me.TextBoxImport.Name = "TextBoxImport"
         Me.TextBoxImport.Size = New System.Drawing.Size(222, 20)
         Me.TextBoxImport.TabIndex = 1
@@ -646,6 +651,27 @@ Partial Class Form1
         Me.OpenFileDlg.DefaultExt = "csv"
         Me.OpenFileDlg.Filter = "CSV files|*.csv"
         Me.OpenFileDlg.Title = "Select CSV File"
+        '
+        'CheckBoxAGKWR
+        '
+        Me.CheckBoxAGKWR.AutoSize = True
+        Me.CheckBoxAGKWR.Location = New System.Drawing.Point(98, 87)
+        Me.CheckBoxAGKWR.Name = "CheckBoxAGKWR"
+        Me.CheckBoxAGKWR.Size = New System.Drawing.Size(101, 17)
+        Me.CheckBoxAGKWR.TabIndex = 29
+        Me.CheckBoxAGKWR.Text = "Append Results"
+        Me.CheckBoxAGKWR.UseVisualStyleBackColor = True
+        '
+        'CheckBoxAIR
+        '
+        Me.CheckBoxAIR.AutoSize = True
+        Me.CheckBoxAIR.Enabled = False
+        Me.CheckBoxAIR.Location = New System.Drawing.Point(98, 59)
+        Me.CheckBoxAIR.Name = "CheckBoxAIR"
+        Me.CheckBoxAIR.Size = New System.Drawing.Size(101, 17)
+        Me.CheckBoxAIR.TabIndex = 30
+        Me.CheckBoxAIR.Text = "Append Results"
+        Me.CheckBoxAIR.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -740,5 +766,7 @@ Partial Class Form1
     Friend WithEvents ButtonImport As System.Windows.Forms.Button
     Friend WithEvents TextBoxImport As System.Windows.Forms.TextBox
     Friend WithEvents ButtonSelectFile As System.Windows.Forms.Button
+    Friend WithEvents CheckBoxAGKWR As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBoxAIR As System.Windows.Forms.CheckBox
 
 End Class
