@@ -330,7 +330,8 @@ Leave:
         'ADD ITEMS
         Dim LVI As ListViewItem
         Dim itxt As String
-
+        Dim index As Integer = 0
+        Dim check As Integer = 0
         'SBApproxMin.Value = 0
         'SBApproxMax.Value = 0
         'SBAvgMin.Value = 0
@@ -344,34 +345,43 @@ Leave:
             col = Split(row(i), ",")
 
             itxt = col(0)
+
+            For index = 0 To ListViewCSV.Items.Count - 1
+                If itxt = ListViewCSV.Items(index).SubItems(0).Text Then check = 1
+            Next
+
             If itxt <> vbNullString Then itxt = itxt.Trim
 
             LVI = New ListViewItem(itxt)
-            For j = 1 To col.Length - 1
-                If j <> IC Then
-                    itxt = col(j)
-                    If itxt <> vbNullString Then itxt = itxt.Trim
-                    LVI.SubItems.Add(itxt)
+
+            If check = 0 Then
+                For j = 1 To col.Length - 1
+                    If j <> IC Then
+                        itxt = col(j)
+                        If itxt <> vbNullString Then itxt = itxt.Trim
+                        LVI.SubItems.Add(itxt)
+                    End If
+                    Nap(2)
+                Next j
+
+                If LVI.SubItems.Count - 1 < CNT_IDX Then
+                    LVI.SubItems.Add(Space(BUFFER_LEN))
+                Else
+                    'already added
                 End If
-                Nap(2)
-            Next j
+                'LVI.SubItems.Add(Space(BUFFER_LEN))
+                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(APPROX_IDX).Text, BUFFER_LEN))
+                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(AVG_IDX).Text, BUFFER_LEN))
+                'LVI.SubItems.Add(BUFFER_TXT)
 
-            If LVI.SubItems.Count - 1 < CNT_IDX Then
-                LVI.SubItems.Add(Space(BUFFER_LEN))
-            Else
-                'already added
-            End If
-            'LVI.SubItems.Add(Space(BUFFER_LEN))
-            LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(APPROX_IDX).Text, BUFFER_LEN))
-            LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(AVG_IDX).Text, BUFFER_LEN))
-            'LVI.SubItems.Add(BUFFER_TXT)
+                If LVI.SubItems(CNT_IDX).Text = Space(BUFFER_LEN) Then
+                    LVI.SubItems.Add(BUFFER_TXT)
+                Else
+                    LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(CNT_IDX).Text, BUFFER_LEN))
+                End If
 
-            If LVI.SubItems(CNT_IDX).Text = Space(BUFFER_LEN) Then
-                LVI.SubItems.Add(BUFFER_TXT)
-            Else
-                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(CNT_IDX).Text, BUFFER_LEN))
+                Me.ListViewCSV.Items.Add(LVI)
             End If
-            Me.ListViewCSV.Items.Add(LVI)
 
         Next i
 
