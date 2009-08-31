@@ -52,6 +52,7 @@ Partial Class Form1
         Me.SBApproxMin = New System.Windows.Forms.NumericUpDown
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
         Me.GroupBoxGenerateKW = New System.Windows.Forms.GroupBox
+        Me.CheckBoxAGKWR = New System.Windows.Forms.CheckBox
         Me.ButtonGenerateKW = New System.Windows.Forms.Button
         Me.ComboBoxGL = New System.Windows.Forms.ComboBox
         Me.LabelCountry = New System.Windows.Forms.Label
@@ -74,13 +75,12 @@ Partial Class Form1
         Me.CollapsiblePanelFilter = New Salamander.Windows.Forms.CollapsiblePanel
         Me.CollapsiblePanelSW = New Salamander.Windows.Forms.CollapsiblePanel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.CheckBoxAIR = New System.Windows.Forms.CheckBox
         Me.ButtonImport = New System.Windows.Forms.Button
         Me.TextBoxImport = New System.Windows.Forms.TextBox
         Me.ButtonSelectFile = New System.Windows.Forms.Button
         Me.LabelStatus = New System.Windows.Forms.Label
         Me.OpenFileDlg = New System.Windows.Forms.OpenFileDialog
-        Me.CheckBoxAGKWR = New System.Windows.Forms.CheckBox
-        Me.CheckBoxAIR = New System.Windows.Forms.CheckBox
         Me.GroupBoxGenerateCount.SuspendLayout()
         CType(Me.SpinBoxThrottle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CMForLV.SuspendLayout()
@@ -359,14 +359,24 @@ Partial Class Form1
         Me.GroupBoxGenerateKW.Controls.Add(Me.WebBrowser1)
         Me.GroupBoxGenerateKW.Location = New System.Drawing.Point(12, 28)
         Me.GroupBoxGenerateKW.Name = "GroupBoxGenerateKW"
-        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 111)
+        Me.GroupBoxGenerateKW.Size = New System.Drawing.Size(418, 150)
         Me.GroupBoxGenerateKW.TabIndex = 29
         Me.GroupBoxGenerateKW.TabStop = False
         Me.GroupBoxGenerateKW.Text = "Generate Keyword List"
         '
+        'CheckBoxAGKWR
+        '
+        Me.CheckBoxAGKWR.AutoSize = True
+        Me.CheckBoxAGKWR.Location = New System.Drawing.Point(98, 124)
+        Me.CheckBoxAGKWR.Name = "CheckBoxAGKWR"
+        Me.CheckBoxAGKWR.Size = New System.Drawing.Size(101, 17)
+        Me.CheckBoxAGKWR.TabIndex = 29
+        Me.CheckBoxAGKWR.Text = "Append Results"
+        Me.CheckBoxAGKWR.UseVisualStyleBackColor = True
+        '
         'ButtonGenerateKW
         '
-        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 82)
+        Me.ButtonGenerateKW.Location = New System.Drawing.Point(330, 119)
         Me.ButtonGenerateKW.Name = "ButtonGenerateKW"
         Me.ButtonGenerateKW.Size = New System.Drawing.Size(75, 23)
         Me.ButtonGenerateKW.TabIndex = 23
@@ -378,7 +388,7 @@ Partial Class Form1
         Me.ComboBoxGL.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxGL.FormattingEnabled = True
         Me.ComboBoxGL.Items.AddRange(New Object() {"All Countries & Territories:US", "United States:US", "United Kingdom:GB", "Afghanistan:AF", "Albania:AL", "Algeria:DZ", "American Samoa:AS", "Andorra:AD", "Angola:AO", "Anguilla:AI", "Antarctica:AQ", "Antigua and Barbuda:AG", "Argentina:AR", "Armenia:AM", "Aruba:AW", "Australia:AU", "Austria:AT", "Azerbaijan:AZ", "Bahamas:BS", "Bahrain:BH", "Bangladesh:BD", "Barbados:BB", "Belarus:BY", "Belgium:BE", "Belize:BZ", "Benin:BJ", "Bermuda:BM", "Bhutan:BT", "Bolivia:BO", "Bosnia and Herzegovina:BA", "Botswana:BW", "Bouvet Island:BV", "Brazil:BR", "British Indian Ocean Territory:IO", "Brunei Darussalam:BN", "Bulgaria:BG", "Burkina Faso:BF", "Burundi:BI", "Cambodia:KH", "Cameroon:CM", "Canada:CA", "Cape Verde:CV", "Cayman Islands:KY", "Central African Republic:CF", "Chad:TD", "Chile:CL", "China:CN", "Christmas Island:CX", "Cocos (Keeling) Islands:CC", "Colombia:CO", "Comoros:KM", "Congo:CG", "Congo, Democratic Republic:CD", "Cook Islands:CK", "Costa Rica:CR", "Cote d'Ivoire:CI", "Croatia:HR", "Cyprus:CY", "Czech Republic:CZ", "Denmark:DK", "Djibouti:DJ", "Dominica:DM", "Dominican Republic:DO", "East Timor:TL", "Ecuador:EC", "Egypt:EG", "El Salvador:SV", "Equatorial Guinea:GQ", "Eritrea:ER", "Estonia:EE", "Ethiopia:ET", "Falkland Islands (Malvinas):FK", "Faroe Islands:FO", "Fiji:FJ", "Finland:FI", "France:FR", "French Guiana:GF", "French Polynesia:PF", "French Southern Territories:TF", "Gabon:GA", "Gambia:GM", "Georgia:GE", "Germany:DE", "Ghana:GH", "Gibraltar:GI", "Greece:GR", "Greenland:GL", "Grenada:GD", "Guadeloupe:GP", "Guam:GU", "Guatemala:GT", "Guinea:GN", "Guinea-Bissau:GW", "Guyana:GY", "Haiti:HT", "Heard and McDonald Islands:HM", "Honduras:HN", "Hong Kong:HK", "Hungary:HU", "Iceland:IS", "India:IN", "Indonesia:ID", "Iraq:IQ", "Ireland:IE", "Israel:IL", "Italy:IT", "Jamaica:JM", "Japan:JP", "Jordan:JO", "Kazakhstan:KZ", "Kenya:KE", "Kiribati:KI", "Kuwait:KW", "Kyrgyzstan:KG", "Lao People's Democratic Republic:LA", "Latvia:LV", "Lebanon:LB", "Lesotho:LS", "Liberia:LR", "Libya:LY", "Liechtenstein:LI", "Lithuania:LT", "Luxembourg:LU", "Macau:MO", "Macedonia:MK", "Madagascar:MG", "Malawi:MW", "Malaysia:MY", "Maldives:MV", "Mali:ML", "Malta:MT", "Marshall Islands:MH", "Martinique:MQ", "Mauritania:MR", "Mauritius:MU", "Mayotte:YT", "Mexico:MX", "Micronesia:FM", "Moldova:MD", "Monaco:MC", "Mongolia:MN", "Montserrat:MS", "Morocco:MA", "Mozambique:MZ", "Namibia:NA", "Nauru:NR", "Nepal:NP", "Netherlands:NL", "Netherlands Antilles:AN", "New Caledonia:NC", "New Zealand:NZ", "Nicaragua:NI", "Niger:NE", "Nigeria:NG", "Niue:NU", "Norfolk Island:NF", "Northern Mariana Islands:MP", "Norway:NO", "Oman:OM", "Pakistan:PK", "Palau:PW", "Palestinian Territory:PS", "Panama:PA", "Papua New Guinea:PG", "Paraguay:PY", "Peru:PE", "Philippines:PH", "Pitcairn:PN", "Poland:PL", "Portugal:PT", "Puerto Rico:PR", "Qatar:QA", "Reunion:RE", "Romania:RO", "Russian Federation:RU", "Rwanda:RW", "Saint Kitts and Nevis:KN", "Saint Lucia:LC", "Saint Vincent and the Grenadines:VC", "Samoa:WS", "San Marino:SM", "Sao Tome and Principe:ST", "Saudi Arabia:SA", "Senegal:SN", "Serbia and Montenegro:CS", "Seychelles:SC", "Sierra Leone:SL", "Singapore:SG", "Slovakia:SK", "Slovenia:SI", "Solomon Islands:SB", "Somalia:SO", "South Africa:ZA", "South Georgia and The South Sandwich Islands:GS", "South Korea:KR", "Spain:ES", "Sri Lanka:LK", "St. Helena:SH", "St. Pierre and Miquelon:PM", "Suriname:SR", "Svalbard and Jan Mayen Islands:SJ", "Swaziland:SZ", "Sweden:SE", "Switzerland:CH", "Taiwan:TW", "Tajikistan:TJ", "Tanzania:TZ", "Thailand:TH", "Togo:TG", "Tokelau:TK", "Tonga:TO", "Trinidad and Tobago:TT", "Tunisia:TN", "Turkey:TR", "Turkmenistan:TM", "Turks and Caicos Islands:TC", "Tuvalu:TV", "Uganda:UG", "Ukraine:UA", "United Arab Emirates:AE", "United States Minor Outlying Islands:UM", "Uruguay:UY", "Uzbekistan:UZ", "Vanuatu:VU", "Vatican:VA", "Venezuela:VE", "Viet Nam:VN", "Virgin Islands (British):VG", "Virgin Islands (U.S.):VI", "Wallis and Futuna Islands:WF", "Western Sahara:EH", "Yemen:YE", "Zambia:ZM", "Zimbabwe:ZW"})
-        Me.ComboBoxGL.Location = New System.Drawing.Point(97, 56)
+        Me.ComboBoxGL.Location = New System.Drawing.Point(97, 93)
         Me.ComboBoxGL.Name = "ComboBoxGL"
         Me.ComboBoxGL.Size = New System.Drawing.Size(213, 21)
         Me.ComboBoxGL.TabIndex = 4
@@ -386,7 +396,7 @@ Partial Class Form1
         'LabelCountry
         '
         Me.LabelCountry.AutoSize = True
-        Me.LabelCountry.Location = New System.Drawing.Point(9, 57)
+        Me.LabelCountry.Location = New System.Drawing.Point(9, 94)
         Me.LabelCountry.Name = "LabelCountry"
         Me.LabelCountry.Size = New System.Drawing.Size(52, 13)
         Me.LabelCountry.TabIndex = 20
@@ -414,8 +424,10 @@ Partial Class Form1
         'TextBoxSeedKeyword
         '
         Me.TextBoxSeedKeyword.Location = New System.Drawing.Point(97, 22)
+        Me.TextBoxSeedKeyword.Multiline = True
         Me.TextBoxSeedKeyword.Name = "TextBoxSeedKeyword"
-        Me.TextBoxSeedKeyword.Size = New System.Drawing.Size(131, 20)
+        Me.TextBoxSeedKeyword.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBoxSeedKeyword.Size = New System.Drawing.Size(141, 56)
         Me.TextBoxSeedKeyword.TabIndex = 4
         '
         'LabelSeedKW
@@ -441,7 +453,7 @@ Partial Class Form1
         '
         Me.GroupBoxExport.Controls.Add(Me.TextBoxExport)
         Me.GroupBoxExport.Controls.Add(Me.ButtonExport)
-        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 233)
+        Me.GroupBoxExport.Location = New System.Drawing.Point(12, 272)
         Me.GroupBoxExport.Name = "GroupBoxExport"
         Me.GroupBoxExport.Size = New System.Drawing.Size(418, 57)
         Me.GroupBoxExport.TabIndex = 21
@@ -604,12 +616,23 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.ButtonImport)
         Me.GroupBox1.Controls.Add(Me.TextBoxImport)
         Me.GroupBox1.Controls.Add(Me.ButtonSelectFile)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 145)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 184)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(418, 82)
         Me.GroupBox1.TabIndex = 29
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Import"
+        '
+        'CheckBoxAIR
+        '
+        Me.CheckBoxAIR.AutoSize = True
+        Me.CheckBoxAIR.Enabled = False
+        Me.CheckBoxAIR.Location = New System.Drawing.Point(98, 59)
+        Me.CheckBoxAIR.Name = "CheckBoxAIR"
+        Me.CheckBoxAIR.Size = New System.Drawing.Size(101, 17)
+        Me.CheckBoxAIR.TabIndex = 30
+        Me.CheckBoxAIR.Text = "Append Results"
+        Me.CheckBoxAIR.UseVisualStyleBackColor = True
         '
         'ButtonImport
         '
@@ -651,27 +674,6 @@ Partial Class Form1
         Me.OpenFileDlg.DefaultExt = "csv"
         Me.OpenFileDlg.Filter = "CSV files|*.csv"
         Me.OpenFileDlg.Title = "Select CSV File"
-        '
-        'CheckBoxAGKWR
-        '
-        Me.CheckBoxAGKWR.AutoSize = True
-        Me.CheckBoxAGKWR.Location = New System.Drawing.Point(98, 87)
-        Me.CheckBoxAGKWR.Name = "CheckBoxAGKWR"
-        Me.CheckBoxAGKWR.Size = New System.Drawing.Size(101, 17)
-        Me.CheckBoxAGKWR.TabIndex = 29
-        Me.CheckBoxAGKWR.Text = "Append Results"
-        Me.CheckBoxAGKWR.UseVisualStyleBackColor = True
-        '
-        'CheckBoxAIR
-        '
-        Me.CheckBoxAIR.AutoSize = True
-        Me.CheckBoxAIR.Enabled = False
-        Me.CheckBoxAIR.Location = New System.Drawing.Point(98, 59)
-        Me.CheckBoxAIR.Name = "CheckBoxAIR"
-        Me.CheckBoxAIR.Size = New System.Drawing.Size(101, 17)
-        Me.CheckBoxAIR.TabIndex = 30
-        Me.CheckBoxAIR.Text = "Append Results"
-        Me.CheckBoxAIR.UseVisualStyleBackColor = True
         '
         'Form1
         '
