@@ -424,10 +424,9 @@ Partial Class Form1
         'TextBoxSeedKeyword
         '
         Me.TextBoxSeedKeyword.Location = New System.Drawing.Point(97, 22)
-        Me.TextBoxSeedKeyword.Multiline = True
         Me.TextBoxSeedKeyword.Name = "TextBoxSeedKeyword"
-        Me.TextBoxSeedKeyword.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBoxSeedKeyword.Size = New System.Drawing.Size(141, 56)
+        Me.TextBoxSeedKeyword.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextBoxSeedKeyword.Size = New System.Drawing.Size(141, 20)
         Me.TextBoxSeedKeyword.TabIndex = 4
         '
         'LabelSeedKW

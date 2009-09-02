@@ -347,7 +347,7 @@ Leave:
             itxt = col(0)
 
             For index = 0 To ListViewCSV.Items.Count - 1
-                If itxt = ListViewCSV.Items(index).SubItems(0).Text Then check = 1
+                If col(1).ToString() = ListViewCSV.Items(index).SubItems(0).Text Then check = 1
             Next
 
             If itxt <> vbNullString Then itxt = itxt.Trim
