@@ -50,16 +50,12 @@ Public Class Main
         SetUIState(Status.INIT)
         If My.Computer.FileSystem.FileExists(ErrorFile) Then My.Computer.FileSystem.DeleteFile(ErrorFile)
         CollapsiblePanelSW.PanelState = PanelState.Expanded
-        CollapsiblePanelResult.PanelState = PanelState.Collapsed
-        CollapsiblePanelFilter.PanelState = PanelState.Collapsed
-        CollapsiblePanelResult.Height = 226
+        panelCollapse()
     End Sub
 
     Private Sub CollapsiblePanelSW_PanelStateChanged(ByVal sender As System.Object, ByVal e As Salamander.Windows.Forms.PanelEventArgs) Handles CollapsiblePanelSW.PanelStateChanged
         If CollapsiblePanelSW.PanelState = PanelState.Expanded Then
-            CollapsiblePanelResult.PanelState = PanelState.Collapsed
-            CollapsiblePanelFilter.PanelState = PanelState.Collapsed
-            CollapsiblePanelResult.Height = 226
+            panelCollapse()
         ElseIf CollapsiblePanelSW.PanelState = PanelState.Collapsed Then
             CollapsiblePanelResult.Height = 226
             CollapsiblePanelResult.PanelState = PanelState.Expanded
@@ -1282,5 +1278,11 @@ Leave:
         CollapsiblePanelResult.PanelState = PanelState.Expanded
         CollapsiblePanelFilter.PanelState = PanelState.Expanded
 
+    End Sub
+
+    Public Sub panelCollapse()
+        CollapsiblePanelResult.PanelState = PanelState.Collapsed
+        CollapsiblePanelFilter.PanelState = PanelState.Collapsed
+        CollapsiblePanelResult.Height = 226
     End Sub
 End Class
