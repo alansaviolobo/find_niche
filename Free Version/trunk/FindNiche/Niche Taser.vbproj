@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{89B55EBE-7215-4B1D-9BF5-D0431C289900}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>FindNiche.My.MyApplication</StartupObject>
-    <RootNamespace>FindNiche</RootNamespace>
+    <StartupObject>NicheTaser.My.MyApplication</StartupObject>
+    <RootNamespace>NicheTaser</RootNamespace>
     <AssemblyName>NicheTaser</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
@@ -79,11 +79,11 @@
     <Compile Include="Captcha.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
+    <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListViewColumnSorter.vb" />
@@ -108,8 +108,8 @@
       <DependentUpon>Captcha.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -3,7 +3,7 @@ Imports System.Net
 Imports System.IO
 Imports Salamander.Windows.Forms
 
-Public Class Form1
+Public Class Main
 
     Private MyColumnSorter As ListViewColumnSorter
     Private ErrorFile As String = "Error.log"

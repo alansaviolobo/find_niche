@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("FindNiche")> 
+<Assembly: AssemblyTitle("NicheTaser")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("FindNiche")> 
+<Assembly: AssemblyProduct("NicheTaser")> 
 <Assembly: AssemblyCopyright("Copyright ©  2008")> 
 <Assembly: AssemblyTrademark("")> 
 
