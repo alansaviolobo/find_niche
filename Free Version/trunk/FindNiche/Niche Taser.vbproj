@@ -55,10 +55,6 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="XPPanel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c1a4c9eadd4711d4">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Libraries\collapsible panel\xpanel\XPPanel_binaries\Debug\XPPanel.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
