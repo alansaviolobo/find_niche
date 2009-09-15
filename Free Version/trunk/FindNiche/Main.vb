@@ -1285,4 +1285,10 @@ Leave:
         CollapsiblePanelFilter.PanelState = PanelState.Collapsed
         CollapsiblePanelResult.Height = 226
     End Sub
+
+    Private Sub TextBoxSeedKeyword_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TextBoxSeedKeyword.KeyDown
+        If e.KeyCode = Keys.A And e.Modifiers = Keys.Control Then
+            TextBoxSeedKeyword.SelectAll()
+        End If
+    End Sub
 End Class

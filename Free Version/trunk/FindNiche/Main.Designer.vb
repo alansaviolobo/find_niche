@@ -675,7 +675,7 @@ Partial Class Main
         Me.OpenFileDlg.Filter = "CSV files|*.csv"
         Me.OpenFileDlg.Title = "Select CSV File"
         '
-        'Form1
+        'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -684,7 +684,7 @@ Partial Class Main
         Me.Controls.Add(Me.CollapsiblePanelBar2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(439, 509)
-        Me.Name = "Form1"
+        Me.Name = "Main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Niche Taser"
         Me.GroupBoxGenerateCount.ResumeLayout(False)
