@@ -334,6 +334,7 @@ Leave:
         'SBAvgMax.Value = 0
 
         For i = 1 To row.Length - 1
+            check = 0
             If row(i) = vbNullString Then Continue For
             row(i) = row(i).Trim
             If row(i) = vbNullString Then Continue For
@@ -342,40 +343,42 @@ Leave:
 
             itxt = col(0)
 
-            For index = 0 To ListViewCSV.Items.Count - 1
-                If col(1).ToString() = ListViewCSV.Items(index).SubItems(0).Text Then check = 1
-            Next
-
             If itxt <> vbNullString Then itxt = itxt.Trim
 
             LVI = New ListViewItem(itxt)
 
+            For j = 1 To col.Length - 1
+                If j <> IC Then
+                    itxt = col(j)
+                    If itxt <> vbNullString Then itxt = itxt.Trim
+                    LVI.SubItems.Add(itxt)
+                End If
+                Nap(2)
+            Next j
+
+            If LVI.SubItems.Count - 1 < CNT_IDX Then
+                LVI.SubItems.Add(Space(BUFFER_LEN))
+            Else
+                'already added
+            End If
+            'LVI.SubItems.Add(Space(BUFFER_LEN))
+            LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(APPROX_IDX).Text, BUFFER_LEN))
+            LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(AVG_IDX).Text, BUFFER_LEN))
+            'LVI.SubItems.Add(BUFFER_TXT)
+
+            If LVI.SubItems(CNT_IDX).Text = Space(BUFFER_LEN) Then
+                LVI.SubItems.Add(BUFFER_TXT)
+            Else
+                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(CNT_IDX).Text, BUFFER_LEN))
+            End If
+
+            For index = 0 To ListViewCSV.Items.Count - 1
+                If col(0).ToString() = ListViewCSV.Items(index).SubItems(0).Text Then
+                    check = 1
+                End If
+            Next index
+
             If check = 0 Then
-                For j = 1 To col.Length - 1
-                    If j <> IC Then
-                        itxt = col(j)
-                        If itxt <> vbNullString Then itxt = itxt.Trim
-                        LVI.SubItems.Add(itxt)
-                    End If
-                    Nap(2)
-                Next j
-
-                If LVI.SubItems.Count - 1 < CNT_IDX Then
-                    LVI.SubItems.Add(Space(BUFFER_LEN))
-                Else
-                    'already added
-                End If
-                'LVI.SubItems.Add(Space(BUFFER_LEN))
-                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(APPROX_IDX).Text, BUFFER_LEN))
-                LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(AVG_IDX).Text, BUFFER_LEN))
-                'LVI.SubItems.Add(BUFFER_TXT)
-
-                If LVI.SubItems(CNT_IDX).Text = Space(BUFFER_LEN) Then
-                    LVI.SubItems.Add(BUFFER_TXT)
-                Else
-                    LVI.SubItems.Add(Microsoft.VisualBasic.Strings.Right(BUFFER_TXT & LVI.SubItems(CNT_IDX).Text, BUFFER_LEN))
-                End If
-
                 Me.ListViewCSV.Items.Add(LVI)
             End If
 
@@ -927,7 +930,6 @@ ShowCaptcha:
             HtmlElem = HtmlDoc.GetElementById("kpVariationsTool-keyword")
             HtmlElem.SetAttribute("value", SeedKW)
 
-
             'click button
             HtmlElem = HtmlDoc.GetElementById("kpKeywordPlanner-getKeywordsButton")
 
@@ -1213,8 +1215,6 @@ Leave:
         Catch ex As Exception
 
         End Try
-
-
     End Sub
 
     Private Sub CopySelected_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopySelected.Click, Button1.Click
@@ -1277,7 +1277,6 @@ Leave:
         CollapsiblePanelSW.PanelState = PanelState.Collapsed
         CollapsiblePanelResult.PanelState = PanelState.Expanded
         CollapsiblePanelFilter.PanelState = PanelState.Expanded
-
     End Sub
 
     Public Sub panelCollapse()
